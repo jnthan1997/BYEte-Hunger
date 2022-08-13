@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Food Rescue PH</title>
+		<link rel = "stylesheet" href = "css/edit_contents.css">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+		<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+
+	</head>
+	<body>
+
+		<!-----Side Bar----->
+
+		<div class = "menu-btn">
+			<img class = "menu-logo" src="images/menu.png">
+		</div>
+
+		<div class = "side-bar">
+			<div class = "close-btn">
+				<i class="fas fa-times"></i>
+			</div>
+			<div class = "menu">
+				<img class = "logo_img" src = "images/foodph.png" >
+				<div class = "item"><a href="dashboard.html"><img class = "side-logo" src="images/dashboard.png">Dasboard</a></div>
+				<div class = "item"><a href="reports.html"><img class = "side-logo" src="images/reports.png">Reports</a></div>
+				<div class = "item"><a href="chats.html"><img class = "side-logo" src="images/chats.png">Chats</a></div>
+				<div class = "item"><a href="donation_status.html"><img class = "side-logo" src="images/status.png">Donation Status</a></div>
+				<div class = "item"><a href="edit_contents.html"><img class = "side-logo" src="images/announcement.png">Edit Contents</a></div>
+				<div class = "item"><a href="donors.html"><img class = "side-logo" src="images/donors.png">Donors</a></div>
+			</div>
+		</div>
+
+		<!-----Side Bar----->
+
+
+		<!-----Expand/Collapse Sidebar----->
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.menu-btn').click(function(){
+					$('.side-bar').addClass('active');
+				});
+
+				$('.close-btn').click(function(){
+					$('.side-bar').removeClass('active');
+				});
+			});
+		</script>
+
+		<!-----Expand/Collapse Sidebar----->
+
+	</body>
+</html>
