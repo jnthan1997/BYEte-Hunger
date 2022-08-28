@@ -8,6 +8,8 @@ body {
     font-family: 'Montserrat';
 }
 
+/*-----Header/Side Bar-----*/
+
 .header {
     max-width: 100%;
     height: 100px;
@@ -93,3 +95,590 @@ body {
     background: #258958;
     transition: 0.3s;
 }
+
+/*-----Header/Side Bar-----*/
+
+
+/*-----Announcement-----*/
+
+.announcement-container {
+    margin: 50px;
+    max-width: 100%;
+    border: 1px solid gray;
+    padding: 15px;
+}
+
+.announcement-title {
+    margin-bottom: 25px;
+}
+
+.announcement-content-container {
+   
+}
+
+.table-container {
+  max-width: 96%;
+  margin: 50px auto;
+}
+
+table {
+  margin: auto;
+}
+
+td {
+  width: 10%;
+}
+
+.title h6 {
+  color: #939393;
+}
+
+.date, .time {
+  margin: 0px 2px;
+}
+
+.img-anc {
+  height: 80px;
+  width: 250px;
+}
+
+.q {
+  background-color: #F3A306;
+  border: 0px;
+  border-radius: 40px;
+  color: #FFFFFF;
+  width: 120px;
+  height: 35px;
+  margin: auto;
+  font-family: Montserrat;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.q li {
+  list-style-type: none;
+}
+
+.edit-1, .edit-2, .edit-3 {
+  background-color: #2EB674;
+  border: 0px;
+  width: 130px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin: auto;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
+}
+
+.delete {
+  background-color: #515151;
+  border: 0px;
+  width: 130px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin: auto;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
+}
+
+.edit-1:hover, .edit-2:hover, .edit-3:hover, .delete:hover {
+  transition: 0.3s;
+    opacity: 0.8;
+}
+
+.add-anc {
+  color: #FFC91E;
+  display: flex;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.editAnnouncement-1, .editAnnouncement-2, .editAnnouncement-3 {
+  display: none;
+  width: 70%;
+  margin: auto;
+}
+
+#a-title {
+  font-size: 15px;
+  border: 1px solid;
+  border-color: #939393;
+  width: 97%;
+  margin: 5px 0px;
+  border-top-left-radius: 1% 15%;
+  border-bottom-left-radius: 1% 15%;
+  border-top-right-radius: 1% 15%;
+  border-bottom-right-radius: 1% 15%;
+  height: 40px;
+  padding-left: 20px;
+}
+
+#status {
+  font-family: Montserrat;
+  font-size: 15px;
+  border: 1px solid;
+  border-color: #939393;
+  margin: 5px 0px;
+  border-top-left-radius: 1% 15%;
+  border-bottom-left-radius: 1% 15%;
+  border-top-right-radius: 1% 15%;
+  border-bottom-right-radius: 1% 15%;
+  height: 35px;
+  padding-left: 20px;
+}
+
+#effective, #expiry {
+  font-size: 15px;
+  border: 1px solid;
+  border-color: #939393;
+  width: 93%;
+  margin: 5px 0px;
+  border-top-left-radius: 1% 15%;
+  border-bottom-left-radius: 1% 15%;
+  border-top-right-radius: 1% 15%;
+  border-bottom-right-radius: 1% 15%;
+  height: 40px;
+  padding-left: 20px;
+}
+
+#fileToUpload {
+  font-size: 15px;
+  border: 1px solid;
+  border-color: #939393;
+  width: 60%;
+  margin: 5px 0px;
+  border-top-left-radius: 1% 15%;
+  border-bottom-left-radius: 1% 15%;
+  border-top-right-radius: 1% 15%;
+  border-bottom-right-radius: 1% 15%;
+  height: 40px;
+  padding-left: 20px;
+}
+
+#effective, #expiry {
+  display: block;
+}
+
+#fileToUpload {
+  padding: 15px auto;
+  font-family: Montserrat;
+}
+
+#upload {
+  font-family: Montserrat;
+}
+
+::-webkit-file-upload-button {
+  background: #909090;
+  border: none;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-family: Montserrat;
+  padding: 10px;
+  cursor: pointer;
+    transition: 0.3s ease;
+}
+
+::-webkit-file-upload-button:hover {
+  transition: 0.3s;
+  background: #000000;
+  transition-duration: 0.3s;
+}
+
+.file {
+  border: 1px solid #C4C4C4;
+  font-size: 15px;
+  width: 380px;
+}
+
+.submit-upload {
+  border: none;
+  width: 120px;
+  height: 40px;
+  background-color: #000000;
+  color: #FFFFFF;
+  cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.submit-upload:hover {
+  background: #909090;
+  transition-duration: 0.3s;
+}
+
+.save {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: bold;
+  height: 40px;
+  width: 95px;
+  color: #FFFFFF;
+  background: #2EB674;
+  border: none;
+  text-align: center;
+  margin: 10px auto;
+  cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.save-td {
+  text-align: center;
+}
+
+label {
+  font-weight: bold;
+}
+
+.editAnnouncement-1, .editAnnouncement-2, .editAnnouncement-3 {
+  margin: 20px auto;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.addAnnouncement h4 {
+  margin: 20px auto;
+  background: linear-gradient(to top, #E8FCFF 50%, transparent 50%);
+  font-size: 25px;
+}
+
+#delete_message {
+  display: none;
+ 
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  text-align: center;
+  justify-content: center;
+}
+
+#delete_message h3 {
+  color: #FFFFFF;
+  font-family: Montserrat;
+  margin-top: 10px;
+}
+
+#delete, #cancel {
+  border: none;
+  background: none;
+  width: 100px;
+  height: 40px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 2px solid white;
+  margin: 10px;
+  color: #FFFFFF;
+}
+
+input {
+  font-family: Montserrat;
+}
+
+.modal {
+  max-height: calc(150vh - 210px);
+  overflow-y: auto;
+}
+
+.announce {
+  display: none;
+  margin: 10px auto;
+  padding: 10px 0px;
+  background-color: #00C7FF;
+  text-align: center;
+}
+
+.activate {
+  background-color: #2EB674;
+  border: 0px;
+  width: 130px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat;
+  color: #FFFFFF;
+  margin: auto;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
+}
+
+.activate:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+@media screen and (max-width:1300px) {
+  table, tbody, td, tr {
+    display: block;
+  }
+
+  td {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: normal;
+  }
+
+  .edit-1, .edit-2, .edit-3, .delete {
+    margin: auto;
+  }
+
+  .img-anc {
+    height: 200px;
+    width: 600px;
+  }
+
+  #announcement-title, #eff-date, #exp-date, #status, #fileToUpload {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  #fileToUpload {
+    width: 97%;
+  }
+}
+
+@media screen and (max-width:650px) {
+  .pg-title {
+    max-width: 100%;
+    font-size: 32px;
+  }
+
+  .img-anc {
+    height: 130px;
+    width: 400px;
+  }
+
+  #a-title, #fileToUpload {
+    display: flex;
+    justify-content: flex-start;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width:560px) {
+  .addAnnouncement h4 {
+    margin: 20px auto;
+    background: #E8FCFF;
+    font-size: 25px;
+  }
+}
+
+/*-----Announcement-----*/
+
+
+/*-----News Feed-----*/
+
+.newsfeed-container {
+    margin: 50px;
+    max-width: 100%;
+    border: 1px solid gray;
+    padding: 15px;
+}
+
+.newsfeed-title {
+    margin-bottom: 25px;
+}
+
+.newsfeed-content-container {
+    margin-right: 20px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#image_input {
+    padding: 10px;
+    margin-right: 50px;
+    width: 400px;
+    max-width: 100%;
+    height: 230px;
+    border: 1px solid gray;
+    justify-content: center;
+    text-align: center;
+    background: #AEAEAE;
+}
+
+.newsfeed-content-container textarea {
+    width: 525px;
+    height: 230px;
+    max-width: 100%;
+    padding: 20px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.newsfeed-btns {
+    text-align: center;
+}
+
+.edit-newsfeed, .post-newsfeed {
+    width: 130px;
+    padding: 10px;
+    color: #fff;
+    background: #2EB674;
+    cursor: pointer;
+    border: none;
+    margin: 15px;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
+}
+
+.delete-newsfeed {
+    width: 130px;
+    padding: 10px;
+    color: #fff;
+    background: #515151;
+    cursor: pointer;
+    border: none;
+    margin: 15px;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
+}
+
+.edit-newsfeed:hover, .post-newsfeed:hover, .delete-newsfeed:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+@media screen and (max-width:700px) {
+
+    .newsfeed-content-container {
+        display: inherit;
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    #image_input {
+        margin-bottom: 30px;
+    }
+}
+
+/*-----News Feed-----*/
+
+
+/*-----Trivia-----*/
+
+.trivia-container {
+    margin: 50px;
+    max-width: 100%;
+    border: 1px solid gray;
+    padding: 15px;
+}
+
+.trivia-title {
+    margin-bottom: 25px;
+}
+
+.trivia-content-container {
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.trivia-content-container textarea {
+    width: 970px;
+    max-width: 100%;
+    height: 246px;
+    padding: 20px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+
+.trivia-btns {
+    text-align: center;
+}
+
+.edit-trivia, .post-trivia {
+    width: 130px;
+    padding: 10px;
+    color: #fff;
+    background: #2EB674;
+    cursor: pointer;
+    border: none;
+    margin: 15px;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
+}
+
+.delete-trivia {
+    width: 130px;
+    padding: 10px;
+    color: #fff;
+    background: #515151;
+    cursor: pointer;
+    border: none;
+    margin: 15px;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
+}
+
+.edit-trivia:hover, .post-trivia:hover, .delete-trivia:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+/*-----Trivia-----*/

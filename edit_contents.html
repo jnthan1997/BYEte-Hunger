@@ -8,6 +8,8 @@
 		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 		<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	</head>
 	<body>
@@ -40,6 +42,264 @@
 		</div>
 
 		<!-----Side Bar----->
+
+
+
+		<!-----Announcement----->
+
+		<div class = "announcement-container">
+			<h2 class = "announcement-title">EDIT ANNOUNCEMENT SECTION</h2>
+			<div class = "announcement-content-container">
+			<div class="">
+			<table>
+				<tbody>
+					<tr>
+						<td><img class="img-anc" src="images/slide-img-1.jpg" alt="img1"></td>
+						<td>
+							<div class="title">
+								<h5>Announcement Title</h5>
+								<h6>Effective Date: <span class="date">MM/DD/YYYY</span><span class="time">00:00 AM/PM</span></h6>
+								<h6>Expiry Date: <span class="date">MM/DD/YYYY</span><span class="time">00:00 AM/PM</span></h6>
+							</div>
+						</td>
+						<td>
+							<div class="q">
+								<ul>
+									<li>QUEUED</li>
+								</ul>
+							</div>
+						</td>
+						<td><button class="activate" type="button" name="button">ACTIVATE</button></td>
+						<td><button class="edit-1" type="button" name="button">EDIT</button></td>
+						<td><button class="delete" type="button" name="button">DELETE</button></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div id="delete_message">
+			<h3>Are you sure you want to delete this?</h3>
+			<input type="button" value="Delete" id="delete">
+			<input type="button" value="Cancel" id="cancel">
+		</div>
+
+		</div>
+		</div>
+
+		<div class="editAnnouncement-1">
+			<form id="editAnnouncementForm" class="" action="index.html" method="post">
+				<table>
+					<tbody>
+						<tr>
+							<td><label id="announcement-title">ANNOUNCEMENT TITLE</label></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input id="a-title" type="text" name="" value="" placeholder="ENTER TITLE"></td>
+						</tr>
+						<tr>
+							<td><select name="orderStatus" id="status">
+									<option value="0" disabled selected>STATUS</option>
+									<option value="1">QUEUED</option>
+									<option value="2">PUBLISHED</option>
+									<option value="3">EXPIRED</option>
+								</select></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input class="file" type="file" name="fileToUpload" id="fileToUpload">
+								<input class="submit-upload" type="submit" value="Upload Image" name="submit" id="upload">
+							</td>
+						</tr>
+						<tr>
+							<td><label id="eff-date">EFFECTIVE DATE</label>
+								<input id="effective" type="datetime-local" name="" value="">
+							</td>
+							<td><label id="exp-date">EXPIRY DATE</label>
+								<input id="expiry" type="datetime-local" name="" value="">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="save-td"><button class="save" type="button" name="button" onclick="">SAVE</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+
+		<div class="">
+		<p class="announce">Announcement Posted Successfully</p>
+		<a class="add-anc" id="add-announcement" href="#">+ ADD ANNOUNCEMENTS</a>
+		<!-- Create Announcement Modal -->
+		<div id="myModal" class="modal">
+			<!-- Create Announcement Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<div class="addAnnouncement">
+					<h4>CREATE NEW ANNOUNCEMENT</h4>
+					<form id="addAnnouncementForm" class="" action="index.html" method="post">
+						<table>
+							<tbody>
+								<tr>
+									<td><label id="announcement-title">ANNOUNCEMENT TITLE</label></td>
+								</tr>
+								<tr>
+									<td colspan="2"><input id="a-title" type="text" name="" value="" placeholder="ENTER TITLE"></td>
+								</tr>
+								<tr>
+									<td><select name="orderStatus" id="status">
+											<option value="0" disabled selected>STATUS</option>
+											<option value="1">QUEUED</option>
+											<option value="2">PUBLISHED</option>
+											<option value="3">EXPIRED</option>
+										</select></td>
+								</tr>
+								<tr>
+									<td colspan="2"><input class="file" type="file" name="fileToUpload" id="fileToUpload">
+										<input class="submit-upload" type="submit" value="Upload Image" name="submit" id="upload">
+									</td>
+								</tr>
+								<tr>
+									<td><label id="eff-date">EFFECTIVE DATE</label>
+										<input id="effective" type="datetime-local" name="" value="">
+									</td>
+									<td><label id="exp-date">EXPIRY DATE</label>
+										<input id="expiry" type="datetime-local" name="" value="">
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="save-td"><button class="save" type="button" name="button" onclick="">CREATE</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		
+
+		</div>
+
+	</div>
+
+		<!-----Edit Button jQuery----->
+	<script>
+		$(".edit-1").click(function() {
+			$(".editAnnouncement-1").toggle('slow');
+		});
+		$(".edit-2").click(function() {
+			$(".editAnnouncement-2").toggle('slow');
+		});
+		$(".edit-3").click(function() {
+			$(".editAnnouncement-3").toggle('slow');
+		});
+	</script>
+	<!-----Edit Button jQuery----->
+
+	<!-----Modal JS for Add Announcement----->
+	<script>
+		// Get the modal
+		var modal = document.getElementById("myModal");
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("add-announcement");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+	<!-----Modal JS for Add Announcement----->
+
+	<!-----Delete Announcement Modal----->
+	<script>
+		$(document).ready(function() {
+			$(".delete").click(function() {
+				message();
+			});
+			$("#cancel").click(function() {
+				hide();
+			});
+		});
+
+		function message() {
+			$("#delete_message").slideDown();
+		}
+
+		function hide() {
+			$("#delete_message").slideUp();
+		}
+	</script>
+	<!-----Delete Announcement Modal----->
+
+	<!-----Announcement Posted----->
+	<script>
+		$(".save").click(function() {
+			$(".announce").show(1000);
+		});
+		$(".add-anc").click(function() {
+			$(".announce").hide(1000);
+		});
+	</script>
+	<!-----Announcement Posted----->
+
+		<!-----Announcement----->
+
+
+
+		<!-----News Feed----->
+
+		<div class = "newsfeed-container">
+			<h2 class = "newsfeed-title">EDIT NEWS FEED SECTION</h2>
+			<div class = "newsfeed-content-container">
+				<input type = "file" id="image_input" accept=".jpg,.jpeg,.png">
+
+				<textarea name="newsfeed-content" placeholder="Type here..."></textarea>
+			</div>
+
+			<div class = "newsfeed-btns">
+				<button class="edit-newsfeed">EDIT</button>
+				<button class="post-newsfeed">POST</button>
+				<button class="delete-newsfeed">DELETE</button>
+			</div>
+		</div>
+
+		<script src="js/edit_contents.js"></script>
+
+		<!-----News Feed----->
+
+
+
+		<!-----Trivia----->
+
+		<div class = "trivia-container">
+			<h2 class = "trivia-title">EDIT TRIVIA SECTION</h2>
+			<div class = "trivia-content-container">
+				<textarea name="trvia-content" placeholder="Type here..."></textarea>
+			</div>
+
+			<div class = "trivia-btns">
+				<button class="edit-trivia">EDIT</button>
+				<button class="post-trivia">POST</button>
+				<button class="delete-trivia">DELETE</button>
+			</div>
+		</div>
+
+		<!-----Trivia----->
+
 
 
 		<!-----Expand/Collapse Sidebar----->

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Food Rescue PH</title>
+		<link rel = "stylesheet" href = "css/confirmed_donation.css">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+		<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+
+	</head>
+	<body>
+
+		<!-----Side Bar----->
+
+		<div class = "header">
+			<div class = "menu-btn">
+				<img class = "menu-logo" src="images/menu.png">
+			</div>
+			<div class = "logout-btn">
+				<img class = "logout-logo" src="images/logout.png">
+				<p style="float: right; padding: 5px; font-size: 15px;">Log out</p>
+			</div>
+		</div>
+
+		<div class = "side-bar">
+			<div class = "close-btn">
+				<i class="fas fa-times"></i>
+			</div>
+			<div class = "menu">
+				<img class = "logo_img" src = "images/foodph.png" >
+				<div class = "item"><a href="dashboard.html"><img class = "side-logo" src="images/dashboard.png">Dasboard</a></div>
+				<div class = "item"><a href="reports.html"><img class = "side-logo" src="images/reports.png">Reports</a></div>
+				<div class = "item"><a href="chats.html"><img class = "side-logo" src="images/chats.png">Chats</a></div>
+				<div class = "item"><a href="donation_status.html"><img class = "side-logo" src="images/status.png">Donation Status</a></div>
+				<div class = "item"><a href="edit_contents.html"><img class = "side-logo" src="images/announcement.png">Edit Contents</a></div>
+				<div class = "item"><a href="donors.html"><img class = "side-logo" src="images/donors.png">Donors</a></div>
+			</div>
+		</div>
+
+		<!-----Side Bar----->
+
+
+		<!-----Confirmed Donation Info----->
+
+		<div class = "back-btn"><a href="donation_status.html"><i class="fa fa-arrow-left"></i>&nbsp;BACK</a></div>
+
+		<div class = "confirmed-info-container">
+			<h2 class = "confirmed-info-title">CONFIRMED DONATIONS INFORMATION</h2>
+			<div class = "confirmed-donationsinfo-container">
+
+				<div class = "info-action">
+				<select class = "select-status">
+					<option selected disabled hidden>DONATION STATUS</option>
+  					<option>ACCEPTED</option>
+  					<option>PICKED-UP</option>
+  					<option>DROPPED OFF</option>
+  					<option>CANCELED</option>
+				</select>
+
+				<button class = "confirm-btn">CONFIRM</button>
+				</div>
+
+				<table>
+					<tr>
+						<th>UID:</th>
+						<td>1234567</td>
+					</tr>
+					<tr>
+						<th>NAME OF DONOR:</th>
+						<td>JOHN DOE</td>
+					</tr>
+					<tr>
+						<th>ITEM:</th>
+						<td>LOREM IPSUM</td>
+					</tr>
+					<tr>
+						<th>TYPE:</th>
+						<td>LOREM IPSUM</td>
+					</tr>
+					<tr>
+						<th>WEIGHT:</th>
+						<td>50 KG</td>
+					</tr>
+					<tr>
+						<th>DATE OF PURCHASE:</th>
+						<td>MM/DD/YY</td>
+					</tr>
+					<tr>
+						<th>EXPIRATION DATE:</th>
+						<td>MM/DD/YY</td>
+					</tr>
+				</table>
+				
+				<div class="info-note">
+					<h4>NOTES:</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue nisl vel tincidunt rhoncus. Aliquam erat volutpat. In et pharetra nibh. Mauris scelerisque nisi at risus finibus mollis. Sed nisl nisl, pellentesque feugiat lacinia sit amet, dignissim rutrum purus. Praesent cursus turpis eget neque euismod ultricies.</p>
+				</div>
+
+				<div class="info-image">
+					<h4>ATTACHED IMAGE:</h4>
+					<img class="attached-img" src="">
+				</div>
+
+			</div>
+		</div>
+
+		<!-----Confirmed Donation Info----->
+
+
+
+		<!-----Expand/Collapse Sidebar----->
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.menu-btn').click(function(){
+					$('.side-bar').addClass('active');
+				});
+
+				$('.close-btn').click(function(){
+					$('.side-bar').removeClass('active');
+				});
+			});
+		</script>
+
+		<!-----Expand/Collapse Sidebar----->
+
+	</body>
+</html>
