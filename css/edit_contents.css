@@ -406,7 +406,7 @@ label {
 
 .addAnnouncement h4 {
   margin: 20px auto;
-  background: linear-gradient(to top, #E8FCFF 50%, transparent 50%);
+  background: linear-gradient(to top, #2EB674 50%, transparent 50%);
   font-size: 25px;
 }
 
@@ -453,7 +453,7 @@ input {
   display: none;
   margin: 10px auto;
   padding: 10px 0px;
-  background-color: #00C7FF;
+  background-color: #2EB674;
   text-align: center;
 }
 
@@ -530,7 +530,7 @@ input {
 @media screen and (max-width:560px) {
   .addAnnouncement h4 {
     margin: 20px auto;
-    background: #E8FCFF;
+    background: #2EB674;
     font-size: 25px;
   }
 }
