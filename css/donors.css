@@ -304,6 +304,23 @@ h1 {
     opacity: 0.8;
 }
 
+.deny-btn {
+    width: 180px;
+    padding: 10px;
+    color: #fff;
+    font-family: Montserrat;
+    background: #6a706d;
+    cursor: pointer;
+    border: none;
+    margin: 15px;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
+}
+
+.deny-btn:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
 .pendingContent h4{
     color: #FFC91E;
     margin-top: 5px auto;
