@@ -8,6 +8,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 		<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	</head>
 	<body>
@@ -41,6 +42,254 @@
 
 		<!-----Side Bar----->
 
+		<!-----Donors------->
+
+		<h1>DONORS</h1>
+
+		<!-----Verified Donors------->
+
+		<div class="verified-container">
+			<h2 class="label"><b>VERIFIED USERS</b></h2>
+			<div class = "verified-donors-container">
+					<table class="verified_table">
+						<thead> 
+							<tr>
+								<th class="label1"><b>No.</b></th>
+								<th class="label2"><b>Donor Name</b></th>
+							</tr>
+						</thead>
+						
+						<tbody id="tableData">
+								<tr data-href="#myModal">
+									<td class="dataNum">01</td>
+									<td class="dataName">John Doe</td>
+								</tr>
+								<tr data-href="#myModal">
+									<td class="dataNum">02</td>
+									<td class="dataName">John Doe</td>
+								</tr>
+								<tr data-href="#myModal">
+									<td class="dataNum">03</td>
+									<td class="dataName">John Doe</td>
+								</tr>
+								<tr data-href="#myModal">
+									<td class="dataNum">04</td>
+									<td class="dataName">John Doe</td>
+								</tr>
+								<tr data-href="#myModal">
+									<td class="dataNum">05</td>
+									<td class="dataName">John Doe</td>
+								</tr>
+								<tr data-href="#myModal">
+									<td class="dataNum">05</td>
+									<td class="dataName">John Doe</td>
+								</tr>
+							</a>
+						</tbody>
+					</table>
+			</div>
+		</div>
+
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<div class="verifiedContent">
+					<h4>VERIFIED USER</h4>
+					<form id="verified-user-info" class="" action="index.html" method="post"></form>
+					<div class = "info-action">
+						<select class = "select-status">
+							<option selected disabled hidden>DONATION STATUS</option>
+							  <option>ACCEPTED</option>
+							  <option>PICKED-UP</option>
+							  <option>DROPPED OFF</option>
+							  <option>CANCELED</option>
+						</select>
+		
+						<button class = "confirm-btn">CONFIRM</button>
+						</div>
+		
+						<table class="verifiedTable">
+							<tr>
+								<th>ORGANIZATION: </th>
+								<td>Lorem Ipsum </td>
+							</tr>
+							<tr>
+								<th>CONTACT PERSON / REPRESENTATIVE: </th>
+								<td>John Doe</td>
+							</tr>
+							<tr>
+								<th>CONTACT NUMBER: </th>
+								<td>0912343563</td>
+							</tr>
+							<tr>
+								<th>EMAIL ADDRESS: </th>
+								<td>johndoe@gmail.com</td>
+							</tr>
+							<tr>
+						</table>
+				</div>
+			</div>
+		</div>
+		
+		<!-----Verified Donors------->
+		
+
+		<!-----Pending Donors------->
+
+		<div class="pending-container">
+			<h2 class="label"><b>PENDING USERS</b></h2>
+			<div class = "pending-donors-container">
+					<table class="pending_table">
+						<thead> 
+							<tr>
+								<th class="label1"><b>No.</b></th>
+								<th class="label2"><b>Donor Name</b></th>
+							</tr>
+						</thead>
+						
+							<tbody id="tableData2">
+								<tr data-href="#myModal2">
+									<td class="dataNum">01</td>
+									<td class="dataName">John Doe</td>
+								</tr>
+								<tr data-href="#myModal2">
+									<td class="dataNum">02</td>
+									<td class="dataName">John Doe</td>
+								</tr>
+								<tr data-href="#myModal2">
+									<td class="dataNum">03</td>
+									<td class="dataName">John Doe</td>
+								</tr>
+								<tr data-href="#myModal2">
+									<td class="dataNum">04</td>
+									<td class="dataName">John Doe</td>
+								</tr>
+								<tr data-href="#myModal2">
+									<td class="dataNum">05</td>
+									<td class="dataName">John Doe</td>
+								</tr>
+								<tr data-href="#myModal2">
+									<td class="dataNum">05</td>
+									<td class="dataName">John Doe</td>
+								</tr>
+							</a>
+						</tbody>
+					</table>
+			</div>
+		</div>
+
+		<div id="myModal2" class="modal">
+			<div class="modal-content">
+				<span class="close2">&times;</span>
+				<div class="pendingContent">
+					<h4>PENDING USER</h4>
+					<form id="pending-user-info" class="" action="index.html" method="post"></form>
+					<div class = "info-action">
+						<select class = "select-status">
+							<option selected disabled hidden>DONATION STATUS</option>
+							  <option>ACCEPTED</option>
+							  <option>PICKED-UP</option>
+							  <option>DROPPED OFF</option>
+							  <option>CANCELED</option>
+						</select>
+		
+						<button class = "confirm-btn">CONFIRM</button>
+						</div>
+		
+						<table class="pendingTable">
+							<tr>
+								<th>ORGANIZATION: </th>
+								<td>Lorem Ipsum </td>
+							</tr>
+							<tr>
+								<th>CONTACT PERSON / REPRESENTATIVE: </th>
+								<td>John Doe</td>
+							</tr>
+							<tr>
+								<th>CONTACT NUMBER: </th>
+								<td>0912343563</td>
+							</tr>
+							<tr>
+								<th>EMAIL ADDRESS: </th>
+								<td>johndoe@gmail.com</td>
+							</tr>
+							<tr>
+						</table>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const rows = document.querySelectorAll("tr[data-href]");
+				
+				rows.forEach(row => {
+					row.addEventListener("click", () => {
+						window.location.href = row.dataset.href;
+					});
+				});
+
+			});
+		</script>
+		<script>
+			// Get the modal
+			var modal = document.getElementById("myModal");
+
+			// Get the button that opens the modal
+			var btn = document.getElementById("tableData");
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks the button, open the modal
+			btn.onclick = function() {
+				modal.style.display = "block";
+			}
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+				modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		</script>
+		<script>
+			// Get the modal
+			var modal = document.getElementById("myModal2");
+
+			// Get the button that opens the modal
+			var btn = document.getElementById("tableData2");
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close2")[0];
+
+			// When the user clicks the button, open the modal
+			btn.onclick = function() {
+				modal.style.display = "block";
+			}
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+				modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		</script>
+		
+
+		<!-----Pending Donors------->
+
+		<!-----Donors------->
 
 		<!-----Expand/Collapse Sidebar----->
 
