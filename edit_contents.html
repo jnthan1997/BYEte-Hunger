@@ -269,13 +269,13 @@
 			<div class = "newsfeed-content-container">
 				<input type = "file" id="image_input" accept=".jpg,.jpeg,.png">
 
-				<textarea name="newsfeed-content" placeholder="Type here..."></textarea>
+				<textarea name="newsfeed-content" id="newsfeed-content"placeholder="Type here..."></textarea>
 			</div>
 
 			<div class = "newsfeed-btns">
-				<button class="edit-newsfeed">EDIT</button>
-				<button class="post-newsfeed">POST</button>
-				<button class="delete-newsfeed">DELETE</button>
+				<button class="imgup-newsfeed" id="newsfeed-imgup">UPLOAD IMAGE</button>
+				<button class="post-newsfeed" id="newsfeed-post">POST</button>
+				<button class="delete-newsfeed" id="newsfeed-delete">DELETE</button>
 			</div>
 		</div>
 
@@ -290,12 +290,12 @@
 		<div class = "trivia-container">
 			<h2 class = "trivia-title">EDIT TRIVIA SECTION</h2>
 			<div class = "trivia-content-container">
-				<textarea name="trvia-content" placeholder="Type here..."></textarea>
+				<textarea name="trvia-content" id="trivia-content" placeholder="Type here..."></textarea>
 			</div>
 
 			<div class = "trivia-btns">
-				<button class="edit-trivia">EDIT</button>
-				<button class="post-trivia">POST</button>
+				<button class="edit-trivia"  id="trivia-edit">EDIT</button>
+				<button class="post-trivia"  id="trivia-post">POST</button>
 				<button class="delete-trivia">DELETE</button>
 			</div>
 		</div>
@@ -319,6 +319,96 @@
 		</script>
 
 		<!-----Expand/Collapse Sidebar----->
+
+
+		<!-----FIREBASE----->
+
+		<script type="module">
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
+			import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+			import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-storage.js";
+
+			// TODO: Add SDKs for Firebase products that you want to use
+			// https://firebase.google.com/docs/web/setup#available-libraries
+
+			// Your web app's Firebase configuration
+			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			const firebaseConfig = {
+			  apiKey: "AIzaSyCfwQ5G2TPE4gZqEHPtvRv1Ew1o3M-ndP4",
+			  authDomain: "byete-hunger-application.firebaseapp.com",
+			  databaseURL: "https://byete-hunger-application-default-rtdb.firebaseio.com",
+			  projectId: "byete-hunger-application",
+			  storageBucket: "byete-hunger-application.appspot.com",
+			  messagingSenderId: "791717154010",
+			  appId: "1:791717154010:web:d49d5dc2cb908a7ae5e9e3",
+			  measurementId: "G-KE1ZL9NVFG"
+			};
+
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+			const analytics = getAnalytics(app);
+			const database = getDatabase(app);
+			const storage = getStorage(app);
+
+			document.getElementById("newsfeed-post").addEventListener('click', (e) => {
+
+				const newsfeedText = document.getElementById("newsfeed-content").value;
+				
+				  set(ref(database, 'page-content/' + 'newsfeed/'), {
+					  newsfeedText: newsfeedText,
+		
+				  })
+				  .then(() => {
+					window.alert("News Feed Updated!");
+			  })
+				.catch((error) => {
+					window.alert("Error!");
+			  }); 
+
+			})
+
+			document.getElementById("newsfeed-imgup").addEventListener('click', (e) => {
+
+					e.preventDefault();
+
+					const storageRef = sRef(storage, 'images/' + 'newsfeed/');
+
+					const file = document.getElementById("image_input").files[0];
+					const name = file.name;
+
+					const metadata = {
+						contentType: file.type
+					}
+
+					const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+
+					getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+						console.log('File available at', downloadURL);
+					});
+			})
+
+			document.getElementById("trivia-post").addEventListener('click', (e) => {
+
+				const triviaText = document.getElementById("trivia-content").value;
+				  set(ref(database, 'page-content/' + 'trivia/'), {
+					  triviaText: triviaText,
+				  })
+				  .then(() => {
+					window.alert("Trivia Updated!");
+			  })
+				.catch((error) => {
+					window.alert("Error!");
+			  }); 
+			})
+
+			
+
+
+	  </script>
+
+	  <!-----FIREBASE----->
 
 	</body>
 </html>

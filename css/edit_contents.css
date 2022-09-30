@@ -587,7 +587,7 @@ input {
     text-align: center;
 }
 
-.edit-newsfeed, .post-newsfeed {
+.imgup-newsfeed, .post-newsfeed {
     width: 130px;
     padding: 10px;
     color: #fff;
@@ -609,7 +609,7 @@ input {
     box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
 }
 
-.edit-newsfeed:hover, .post-newsfeed:hover, .delete-newsfeed:hover {
+.imgup-newsfeed:hover, .post-newsfeed:hover, .delete-newsfeed:hover {
     transition: 0.3s;
     opacity: 0.8;
 }
