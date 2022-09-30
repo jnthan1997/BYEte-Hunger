@@ -130,13 +130,14 @@ h1 {
     border: 0.5px solid #B1B1B1;
     padding: 10px;
     size: 16px;
-    position: sticky;
-    top: 0px; 
+    /*position: sticky;
+    top: 0px;*/
     background-color: rgb(210, 210, 210);
 
 }
 .verified_table tr:hover{
     background-color: #EEEEEE;
+    cursor: pointer;
 }
 .verified_table td {
     border: 0.5px solid #B1B1B1;
@@ -173,13 +174,14 @@ h1 {
     border: 0.5px solid #B1B1B1;
     padding: 10px;
     size: 16px;
-    position: sticky;
-    top: 0px; 
+    /*position: sticky;
+    top: 0px;*/ 
     background-color: rgb(210, 210, 210);
 
 }
 .pending_table tr:hover{
     background-color: #EEEEEE;
+    cursor: pointer;
 }
 .pending_table td {
     border: 0.5px solid #B1B1B1;
@@ -242,7 +244,7 @@ h1 {
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-      transition: 0.3s ease;
+    transition: 0.3s ease;
   }
   
   .close2:hover,
