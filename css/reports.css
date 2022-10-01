@@ -103,15 +103,20 @@ h1 {
 
 /*----- Reports Container -----*/
 .reports-container{
-    margin: 50px;
+    margin: 90px 50px;
 }
 /*----- Generate All Reports Button -----*/
-
+.generate-all-reports-btn-container{
+    position: absolute;
+    right: 0;
+    margin-right: 50px;
+    margin-top: 30px;
+}
 .generate-all-reports-btn{
     border: none;
     background-color: #343434;
-    float: right;
     border-radius: 5px;
+    width: 188px;
     padding: 8px;
     color: white;
     font-family: Montserrat;
