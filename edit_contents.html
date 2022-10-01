@@ -268,8 +268,7 @@
 			<h2 class = "newsfeed-title">EDIT NEWS FEED SECTION</h2>
 			<div class = "newsfeed-content-container">
 				<input type = "file" id="image_input" accept=".jpg,.jpeg,.png">
-
-				<textarea name="newsfeed-content" id="newsfeed-content"placeholder="Type here..."></textarea>
+				<textarea name="newsfeed-content" id="newsfeed-content" placeholder="Type here..."></textarea>
 			</div>
 
 			<div class = "newsfeed-btns">
@@ -294,7 +293,7 @@
 
 			<div class = "trivia-btns">
 				<button class="post-trivia"  id="trivia-post">UPDATE TRIVIA</button>
-				<button class="delete-trivia">CLEAR</button>
+				<button class="delete-trivia" id="trivia-delete">CLEAR</button>
 			</div>
 		</div>
 
@@ -382,7 +381,13 @@
 						console.log('File available at', downloadURL);
 					});
 
-			})
+			});
+
+			document.getElementById("newsfeed-delete").addEventListener('click', (e) => {
+				document.getElementById("newsfeed-content").value = "";
+				document.getElementById("image_input").value = null;
+				document.querySelector("#image_input").style.backgroundImage = null;
+			});
 
 			
 
@@ -398,10 +403,11 @@
 				.catch((error) => {
 					window.alert("Error!");
 			  }); 
-			})
-
+			});
 			
-
+			document.getElementById("trivia-delete").addEventListener('click', (e) => {
+				document.getElementById("trivia-content").value = "";
+			});
 
 	  </script>
 
