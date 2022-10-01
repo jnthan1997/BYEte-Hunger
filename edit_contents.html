@@ -273,9 +273,8 @@
 			</div>
 
 			<div class = "newsfeed-btns">
-				<button class="imgup-newsfeed" id="newsfeed-imgup">UPLOAD IMAGE</button>
-				<button class="post-newsfeed" id="newsfeed-post">POST</button>
-				<button class="delete-newsfeed" id="newsfeed-delete">DELETE</button>
+				<button class="post-newsfeed" id="newsfeed-post">UPDATE NEWS FEED</button>
+				<button class="delete-newsfeed" id="newsfeed-delete">CLEAR</button>
 			</div>
 		</div>
 
@@ -294,9 +293,8 @@
 			</div>
 
 			<div class = "trivia-btns">
-				<button class="edit-trivia"  id="trivia-edit">EDIT</button>
-				<button class="post-trivia"  id="trivia-post">POST</button>
-				<button class="delete-trivia">DELETE</button>
+				<button class="post-trivia"  id="trivia-post">UPDATE TRIVIA</button>
+				<button class="delete-trivia">CLEAR</button>
 			</div>
 		</div>
 
@@ -365,13 +363,9 @@
 			  })
 				.catch((error) => {
 					window.alert("Error!");
-			  }); 
-
-			})
-
-			document.getElementById("newsfeed-imgup").addEventListener('click', (e) => {
-
-					e.preventDefault();
+			  });
+			  
+			  e.preventDefault();
 
 					const storageRef = sRef(storage, 'images/' + 'newsfeed/');
 
@@ -387,7 +381,10 @@
 					getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
 						console.log('File available at', downloadURL);
 					});
+
 			})
+
+			
 
 			document.getElementById("trivia-post").addEventListener('click', (e) => {
 
