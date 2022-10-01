@@ -9,6 +9,23 @@ body {
 	font-weight: 400;
 }
 
+.back-btn {
+    margin-top: -50px;
+    margin-left: 30px;
+    position: absolute;
+}
+
+.back-btn a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.back-btn a:hover {
+    color: black;
+    transition: 0.3s;
+}   
+
 .center{
     align-items: center;
     justify-content: center;
@@ -87,5 +104,9 @@ body {
 
     .enter_email {
         width: 300px;
+    }
+
+    .back-btn a {
+        font-size: 15px;
     }
 }

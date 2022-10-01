@@ -6,11 +6,13 @@
 		<title>Food Rescue PH</title>
 		<link rel = "stylesheet" href = "css/admin_email.css">
 		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-
+		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 	</head>
 	<body>
 
 		<!-----ADMIN EMAIL----->
+
+		<div class = "back-btn"><a href="admin_login.html"><i class="fa fa-arrow-left"></i>&nbsp;Return to Login Page</a></div>
 
 		<div class = "center">
 
@@ -27,6 +29,56 @@
 		</div>
 		
 		<!-----ADMIN EMAIL----->
+
+		<!-----FIREBASE----->
+
+		<script type="module">
+  			// Import the functions you need from the SDKs you need
+  			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+  			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
+  			import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
+
+  			// TODO: Add SDKs for Firebase products that you want to use
+  			// https://firebase.google.com/docs/web/setup#available-libraries
+
+  			// Your web app's Firebase configuration
+  			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  			const firebaseConfig = {
+    			apiKey: "AIzaSyCfwQ5G2TPE4gZqEHPtvRv1Ew1o3M-ndP4",
+    			authDomain: "byete-hunger-application.firebaseapp.com",
+    			databaseURL: "https://byete-hunger-application-default-rtdb.firebaseio.com",
+    			projectId: "byete-hunger-application",
+    			storageBucket: "byete-hunger-application.appspot.com",
+    			messagingSenderId: "791717154010",
+    			appId: "1:791717154010:web:d49d5dc2cb908a7ae5e9e3",
+    			measurementId: "G-KE1ZL9NVFG"
+  			};
+
+  			// Initialize Firebase
+  			const app = initializeApp(firebaseConfig);
+  			const analytics = getAnalytics(app);
+  			const auth = getAuth(app);
+
+
+  			document.getElementById("submit").addEventListener('click' , function(){
+
+  				const email = document.getElementById('emailInput').value
+
+				sendPasswordResetEmail(auth, email)
+  				.then((a) => {
+    				window.alert("Password reset email has been sent!");
+  				})
+  				.catch((error) => {
+    				const errorCode = error.code;
+    				const errorMessage = error.message;
+   	
+  				}) 				
+
+  			})
+
+		</script>
+
+		<!-----FIREBASE----->
 
 	</body>
 </html>
