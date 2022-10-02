@@ -349,6 +349,7 @@
 			const database = getDatabase(app);
 			const storage = getStorage(app);
 
+
 			document.getElementById("newsfeed-post").addEventListener('click', (e) => {
 
 				const newsfeedText = document.getElementById("newsfeed-content").value;
@@ -383,6 +384,7 @@
 
 			});
 
+
 			document.getElementById("newsfeed-delete").addEventListener('click', (e) => {
 				document.getElementById("newsfeed-content").value = "";
 				document.getElementById("image_input").value = null;
@@ -390,7 +392,6 @@
 			});
 
 			
-
 			document.getElementById("trivia-post").addEventListener('click', (e) => {
 
 				const triviaText = document.getElementById("trivia-content").value;
@@ -404,6 +405,7 @@
 					window.alert("Error!");
 			  }); 
 			});
+			
 			
 			document.getElementById("trivia-delete").addEventListener('click', (e) => {
 				document.getElementById("trivia-content").value = "";
