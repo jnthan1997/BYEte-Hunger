@@ -113,7 +113,7 @@ h1 {
     max-width: 100%;
     border: 1px solid gray;
     padding: 15px;
-    background-color: white;
+    background: white;
 }
 
 .confirmed-title {
@@ -165,14 +165,14 @@ h1 {
 /*-----Confirmed Donations-----*/
 
 
-/*-----Pending Donations-----*/
+/*-----New Donations-----*/
 
 .pending-container {
     margin: 50px;
     max-width: 100%;
     border: 1px solid gray;
     padding: 15px;
-    background-color: white;
+    background: white;
 }
 
 .pending-title {

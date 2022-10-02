@@ -6,6 +6,7 @@
 
 body {
     font-family: 'Montserrat';
+    background-color: #F6F6F6;
 }
 
 /*-----Header/Side Bar-----*/
@@ -14,6 +15,7 @@ body {
     max-width: 100%;
     height: 100px;
     border-bottom: 1px solid gray;
+    background-color: white;
 }
 
 .menu-btn {
@@ -116,6 +118,7 @@ body {
     max-width: 100%;
     border: 1px solid gray;
     padding: 15px;
+    background: white;
 }
 
 .pending-info-title {
