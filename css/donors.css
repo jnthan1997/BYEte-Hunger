@@ -147,7 +147,8 @@ h1 {
 .new_table td {
     border: 0.5px solid #B1B1B1;
     padding: 20px;
-    cursor: pointer;
+    font-size: 12px;
+    text-align: center;
 }
 .control-center{
     text-align: center;
@@ -161,6 +162,7 @@ h1 {
     box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
     border-radius: 5px;
     color: white;
+    margin: 3px;
 
 }
 .decline-btn{
@@ -172,6 +174,7 @@ h1 {
     box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
     border-radius: 5px;
     color: white;
+    margin: 3px;
 }
 .confirm-btn:hover{
     background-color: rgb(189, 189, 189);
@@ -219,7 +222,8 @@ h1 {
 .verified_table td {
     border: 0.5px solid #B1B1B1;
     padding: 20px;
-    cursor: pointer;
+    font-size: 12px;
+    text-align: center;
 }
 .delete-btn{
     padding: 5px;
