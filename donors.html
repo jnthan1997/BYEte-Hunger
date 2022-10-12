@@ -4,11 +4,243 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Food Rescue PH</title>
-		<link rel = "stylesheet" href = "css/donors.css">
 		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 		<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+		<style>
+			
+			*{
+			    margin: 0;
+			    padding: 0;
+			    box-sizing: border-box;
+			}
+
+			body {
+			    font-family: 'Montserrat';
+			    background-color: #F6F6F6;
+			}
+
+			h1 {
+			    margin-top: 50px;
+			    margin-bottom: 35px;
+			    text-align: center;
+			    font-weight: bold;
+			    font-size: 35px;
+			    color: black;
+			}
+
+			h5 {
+				color: #FFC91E;
+			}
+
+			.header {
+			    max-width: 100%;
+			    height: 100px;
+			    border-bottom: 1px solid gray;
+			    background-color: white;
+			}
+
+			.menu-btn {
+			    position: absolute;
+			    margin: 25px;
+			    cursor: pointer;
+			}
+
+			.menu-logo {
+			    width: 50px;
+			}
+
+			.logout-btn {
+			    margin-top: 35px;
+			    margin-right: 25px;
+			    cursor: pointer;
+			    float: right;
+			}
+
+			.logout-btn p {
+				margin-top: -2px;
+			}
+
+			.logout-logo {
+			    width: 30px;
+			}
+
+			.close-btn {
+			    position: absolute;
+			    color: #fff;
+			    font-size: 20px;
+			    right: 0;
+			    margin: 20px;
+			    cursor: pointer;
+			}
+
+			.logo_img {
+			    width: 210px;
+			    margin-left: 7px;
+			}
+
+			.side-logo {
+			    width: 13px;
+			    margin-right: 15px;
+			}
+
+			.side-bar {
+			    background: #2EB674;
+			    width: 230px;
+			    height: 100vh;
+			    position: fixed;
+			    top: 0;
+			    left: -100%;
+			    overflow-y: auto;
+			    transition-duration: 0.7s;
+			    transition-property: left;
+			}
+
+			.side-bar.active {
+			    left: 0;
+			}
+
+			.side-bar .menu {
+			    width: 100%;
+			    margin-top: 30px;
+			}
+
+			.side-bar .menu .item {
+			    position: relative;
+			    cursor: pointer;
+			}
+
+			.side-bar .menu .item a {
+			    color: #fff;
+			    text-decoration: none;
+			    font-size: 16px;
+			    display: block;
+			    padding: 5px 20px;
+			    line-height: 40px;
+			}
+
+			.side-bar .menu .item a:hover {
+			    background: #258958;
+			    transition: 0.3s;
+			}
+
+			/*----------------Donors--------------------*/
+			.label{
+			    margin: 15px;
+			    padding-bottom: 10px;
+			    font-size: 20px;
+			}
+			.line{
+			    width: 0px auto;
+			    border: 0.1px solid #B1B1B1;
+			    }
+
+			.user-container{
+			    border: 0.5px solid #B1B1B1;
+			    margin: 15px 40px;
+			    max-width: 100%;
+			    height: 424px;
+			    background-color: white;
+			}
+			.donors-container{
+			    overflow-x: auto;
+			    max-height: 357px;
+			}
+			.donors_table{
+			    overflow-y: scroll;
+			    width: 100%;
+			    
+			}
+			.donors_table {
+			    border-collapse: collapse;
+			}
+			.donors_table th {
+				text-align: center;
+			    border: 0.5px solid #B1B1B1;
+			    padding: 10px;
+			    font-size: 14px;
+			    /*position: sticky;
+			    top: 0px;*/
+			    background-color: rgb(210, 210, 210);
+
+			}
+			.donors_table tr:hover{
+			    background-color: #EEEEEE;
+
+			}
+			.donors_table td {
+			    border: 0.5px solid #B1B1B1;
+			    padding: 20px;
+			    font-size: 12px;
+			    text-align: center;
+			}
+			.control-center{
+			    text-align: center;
+			}
+			.manage-btn{
+			    padding: 5px;
+			    width: 95px;
+			    cursor: pointer;
+			    background: #2EB674;
+			    border: none;
+			    box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
+			    border-radius: 5px;
+			    color: white;
+			    margin: 3px;
+
+			}
+			.manage-btn:hover{
+			    background-color: rgb(189, 189, 189);
+			    transition: 0.3s;
+			    opacity: 0.8;
+			}
+			
+			@media screen and (max-width:700px) {
+			    .control-center {
+			        text-align: center;
+			        margin: 5px;
+			    }
+			}
+
+			.labs{
+				display: inline-block;
+				width: 150px;
+			}
+
+			input:focus {
+				outline: none;
+			}
+
+			.ver-btn {
+				margin-left: 40px;
+			}
+
+			.ver-btn button {
+				padding: 8px;
+				background-color: #2EB674;
+				border-radius: 5px;
+				border: none;
+				color: white;
+				cursor: pointer;
+				box-shadow: 0px 4px 4px 0px rgba(0,0,0,.3);
+			}
+
+			.ver-btn button:hover {
+				background-color: rgb(189, 189, 189);
+			    transition: 0.3s;
+			    opacity: 0.8;
+			}
+
+/*----------------Donors--------------------*/
+
+		</style>
+
 
 	</head>
 	<body>
@@ -46,206 +278,69 @@
 
 		<h1>DONORS</h1>
 
-		<!-----New Donors------->
+		<!-----Donors------->
 
-		<div class="new-container">
-			<h2 class="label"><b>NEW USERS</b></h2>
+		<div class="user-container">
+			<h2 class="label"><b>USERS</b></h2>
+			
 			<div class="line"></div>
-			<div class = "new-donors-container">
-					<table class="new_table">
-						<tr>
-							<th>ID</th>
+			<div class = "donors-container">
+					<table class= "donors_table">
+						<thead>
+							<th>NO</th>
 							<th>DONOR NAME</th>
 							<th>ORGANIZATION</th>
 							<th>CONTACT PERSON</th>
 							<th>CONTACT NUMBER</th>
 							<th>LOCATION</th>
 							<th>EMAIL ADDRESS</th>
+							<th>STATUS</th>
 							<th>CONTROL CENTER</th>
-						</tr>
-						<tr>
-							<td>01</td>
-							<td>John Doe John Doe John Doe</td>
-							<td>N/A</td>
-							<td>N/A</td>
-							<td>09971234567</td>
-							<td>Manila</td>
-							<td>john.doe@gmail.com</td>
-							<td class="control-center">
-								<button class = "confirm-btn">CONFIRM</button>
-								<button class = "decline-btn">DECLINE</button>
-							</td>
-						</tr>
-						<tr>
-							<td>02</td>
-							<td>N/A</td>
-							<td>Lorem Ipsum Organization</td>
-							<td>Jenny Doe</td>
-							<td>09971234567</td>
-							<td>Manila</td>
-							<td>john.doe@gmail.com</td>
-							<td class="control-center">
-								<button class = "confirm-btn">CONFIRM</button>
-								<button class = "decline-btn">DECLINE</button>
-							</td>
-						</tr>
-						<tr>
-							<td>03</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>09971234567</td>
-							<td>Manila</td>
-							<td>john.doe@gmail.com</td>
-							<td class="control-center">
-								<button class = "confirm-btn">CONFIRM</button>
-								<button class = "decline-btn">DECLINE</button>
-							</td>
-						</tr>
-						<tr>
-							<td>04</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>09971234567</td>
-							<td>Manila</td>
-							<td>john.doe@gmail.com</td>
-							<td class="control-center">
-								<button class = "confirm-btn">CONFIRM</button>
-								<button class = "decline-btn">DECLINE</button>
-							</td>
-						</tr>
-						<tr>
-							<td>05</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>09971234567</td>
-							<td>Manila</td>
-							<td>john.doe@gmail.com</td>
-							<td class="control-center">
-								<button class = "confirm-btn">CONFIRM</button>
-								<button class = "decline-btn">DECLINE</button>
-							</td>
-						</tr>
-						<tr>
-							<td>06</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>09971234567</td>
-							<td>Manila</td>
-							<td>john.doe@gmail.com</td>
-							<td class="control-center">
-								<button class = "confirm-btn">CONFIRM</button>
-								<button class = "decline-btn">DECLINE</button>
-							</td>
-						</tr>
+						</thead>
+						<tbody id="tbody1"></tbody>
 					</table>
 						
 			</div>
 		</div>
-		
-		<!-----New Donors------->
-		
-
-		<!-----Verified Donors------->
-
-		<div class="verified-container">
-			<h2 class="label"><b>VERIFIED USERS</b></h2>
-			<div class="line"></div>
-			<div class = "verified-donors-container">
-					<table class="verified_table">
-						<tr>
-							<th>ID</th>
-							<th>DONOR NAME</th>
-							<th>ORGANIZATION</th>
-							<th>CONTACT PERSON</th>
-							<th>CONTACT NUMBER</th>
-							<th>LOCATION</th>
-							<th>EMAIL ADDRESS</th>
-							<th>CONTROL CENTER</th>
-						</tr>
-						<tr>
-							<td>01</td>
-							<td>John Doe John Doe John Doe</td>
-							<td>N/A</td>
-							<td>N/A</td>
-							<td>09971234567</td>
-							<td>Manila</td>
-							<td>john.doe@gmail.com</td>
-							<td class="control-center">
-								<button class = "delete-btn">DELETE USER</button>
-							</td>
-						</tr>
-						<tr>
-							<td>02</td>
-							<td>N/A</td>
-							<td>Lorem Ipsum Organization</td>
-							<td>Jenny Doe</td>
-							<td>09971234567</td>
-							<td>Manila</td>
-							<td>john.doe@gmail.com</td>
-							<td class="control-center">
-								<button class = "delete-btn">DELETE USER</button>
-							</td>
-						</tr>
-						<tr>
-							<td>03</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>09971234567</td>
-							<td>Manila</td>
-							<td>john.doe@gmail.com</td>
-							<td class="control-center">
-								<button class = "delete-btn">DELETE USER</button>
-							</td>
-						</tr>
-						<tr>
-							<td>04</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>09971234567</td>
-							<td>Manila</td>
-							<td>john.doe@gmail.com</td>
-							<td class="control-center">
-								<button class = "delete-btn">DELETE USER</button>
-							</td>
-						</tr>
-						<tr>
-							<td>05</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>09971234567</td>
-							<td>Manila</td>
-							<td>john.doe@gmail.com</td>
-							<td class="control-center">
-								<button class = "delete-btn">DELETE USER</button>
-							</td>
-						</tr>
-						<tr>
-							<td>06</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>09971234567</td>
-							<td>Manila</td>
-							<td>john.doe@gmail.com</td>
-							<td class="control-center">
-								<button class = "delete-btn">DELETE USER</button>
-							</td>
-						</tr>
-					</table>
-			</div>
-		</div>
-
-
-		<!-----Verified Donors------->
 
 		<!-----Donors------->
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLongTitle">User Information</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <label class="labs">Name: </label>
+		        <input type="text" id="FName" readonly="readonly"> <br>
+		        <label class="labs">Organization: </label>
+		        <input type="text" id="Org" readonly="readonly"> <br>
+		        <label class="labs">Contact Person: </label>
+		        <input type="text" id="ContPer" readonly="readonly"> <br>
+		        <label class="labs">Contact Number: </label>
+		        <input type="text" id="ContNum" readonly="readonly"> <br>
+		        <label class="labs">Location: </label>
+		        <input type="text" id="Loca" readonly="readonly"> <br>
+		        <label class="labs">Email Address: </label>
+		        <input type="text" id="EmailAdd" readonly="readonly"> <br>
+		        <label class="labs">Status: </label>
+		        <input type="text" id="Stat" readonly="readonly"> <br>
+		      </div>
+		      <div class="modal-footer">
+		        <button id="ConfUseBtn"type="button" class="btn btn-success" onclick="ConfUse()">CONFIRM</button>
+		        <button id="DecUseBtn"type="button" class="btn btn-danger" onclick="DecUse()">DECLINE</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<!-----Donors------->
+
 
 		<!-----Expand/Collapse Sidebar----->
 
@@ -263,5 +358,170 @@
 
 		<!-----Expand/Collapse Sidebar----->
 
+
+
+		<!-----FIREBASE----->
+
+		<script type="module">
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
+			import { getDatabase, ref, set, child, onValue, get, update, push, remove } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+
+			const firebaseConfig = {
+			  apiKey: "AIzaSyCfwQ5G2TPE4gZqEHPtvRv1Ew1o3M-ndP4",
+			  authDomain: "byete-hunger-application.firebaseapp.com",
+			  databaseURL: "https://byete-hunger-application-default-rtdb.firebaseio.com",
+			  projectId: "byete-hunger-application",
+			  storageBucket: "byete-hunger-application.appspot.com",
+			  messagingSenderId: "791717154010",
+			  appId: "1:791717154010:web:d49d5dc2cb908a7ae5e9e3",
+			  measurementId: "G-KE1ZL9NVFG"
+			};
+
+			const app = initializeApp(firebaseConfig);
+			const analytics = getAnalytics(app);
+			const database = getDatabase(app);
+
+
+			function Select_AllData() {
+				(dbRef, 'Verified Registered User/').once('value', function (snapshot) {
+					snapshot.forEach(function (childSnapshot) {
+						var name = childSnapshot.val().fullName;
+						var org = childSnapshot.val().organization;
+						var contPer = childSnapshot.val().contactPerson;
+						var contNo = childSnapshot.val().contactNo;
+						var loc = childSnapshot.val().location;
+						var email = childSnapshot.val().emailAddress;
+					});
+				});
+			}
+
+			var id = 0;
+			var newUserList = [];
+			var tbody = document.getElementById('tbody1');
+
+
+			//-----USER TABLE-----//
+
+			function AddItemToTable(name,org,contNo,contPer,loc,email,status){
+				let trow = document.createElement("tr");
+				let td1 = document.createElement('td');
+				let td2 = document.createElement('td');
+				let td3 = document.createElement('td');
+				let td4 = document.createElement('td');
+				let td5 = document.createElement('td');
+				let td6 = document.createElement('td');
+				let td7 = document.createElement('td');
+				let td8 = document.createElement('td');
+
+				newUserList.push([name,org,contNo,contPer,loc,email,status]);
+				td1.innerHTML = ++id;
+				td2.innerHTML = name;
+				td3.innerHTML = org;
+				td4.innerHTML = contNo;
+				td5.innerHTML = contPer;
+				td6.innerHTML = loc;
+				td7.innerHTML = email;
+				td8.innerHTML = status;
+
+				trow.appendChild(td1);
+				trow.appendChild(td2);
+				trow.appendChild(td3);
+				trow.appendChild(td4);
+				trow.appendChild(td5);
+				trow.appendChild(td6);
+				trow.appendChild(td7);
+				trow.appendChild(td8);
+
+				var ControlDiv = document.createElement("td");
+				ControlDiv.innerHTML = '<button type="button" class="manage-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="FillModal('+id+')">VIEW</button>'
+
+				trow.appendChild(ControlDiv);
+				tbody.appendChild(trow);
+
+			}
+
+			function AddAllITemsToTable(UnverifiedUser) {
+				id=0;
+				tbody.innerHTML="";
+				UnverifiedUser.forEach(element => {
+					AddItemToTable(element.fullName, element.organization, element.contactPerson, element.contactNo, element.location, element.emailAddress, element.status);
+				});
+			}
+
+			/*function GetAllDataOnce() {
+				const dbRef = ref(database);
+
+				get(child(dbRef, 'Unverified Registered User/'))
+				.then((snapshot) => {
+					var unverifiedUsers = [];
+
+					snapshot.forEach(childSnapshot => {
+						unverifiedUsers.push(childSnapshot.val());
+					});
+
+					AddAllITemsToTable(unverifiedUsers);
+				});
+			}*/
+
+			function GetAllDataRealtime() {
+				const dbRef = ref(database, 'Users/');
+
+				onValue(dbRef,(snapshot) => {
+					var unverifiedUsers = [];
+
+					snapshot.forEach(childSnapshot => {
+						unverifiedUsers.push(childSnapshot.val());
+					});
+
+					AddAllITemsToTable(unverifiedUsers);
+				})
+			}
+
+			window.onload = GetAllDataRealtime;
+
+			var PendModName = document.getElementById('FName');
+			var PendModOrg = document.getElementById('Org');
+			var PendModContPer = document.getElementById('ContPer');
+			var PendModContNo = document.getElementById('ContNum');
+			var PendModLoc = document.getElementById('Loca');
+			var PendModEmail = document.getElementById('EmailAdd');
+			var PendModStatus = document.getElementById('Stat');
+
+			var BtnConfPend = document.getElementById('ConfUseBtn');
+			var BtnDecPend = document.getElementById('DecUseBtn');
+
+			window.FillModal=(index) => {
+				if(index==null){
+					PendModName.value = "";
+					PendModOrg.value = "";
+					PendModContPer.value = "";
+					PendModContNo.value = "";
+					PendModLoc.value = "";
+					PendModEmail.value = "";
+					PendModStatus.value = "";
+				}
+				else{
+					--index;
+					PendModName.value = newUserList[index][0];
+					PendModOrg.value = newUserList[index][1];
+					PendModContPer.value = newUserList[index][2];
+					PendModContNo.value = newUserList[index][3];
+					PendModLoc.value = newUserList[index][4];
+					PendModEmail.value = newUserList[index][5];
+					PendModStatus.value = newUserList[index][6];
+					
+				}
+			}
+
+			
+
+			//-----USER TABLE-----//
+
+		</script>
+
+		<!-----FIREBASE----->
+
 	</body>
 </html>
+
