@@ -213,8 +213,14 @@
 				width: 150px;
 			}
 
+			input {
+				width: 300px;
+				outline: none;
+			}
+
 			input:focus {
 				outline: none;
+
 			}
 
 			.ver-btn {
@@ -288,6 +294,7 @@
 					<table class= "donors_table">
 						<thead>
 							<th>NO</th>
+							<th>UID</th>
 							<th>DONOR NAME</th>
 							<th>ORGANIZATION</th>
 							<th>CONTACT PERSON</th>
@@ -306,7 +313,7 @@
 		<!-----Donors------->
 
 		<!-- Modal -->
-		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -316,6 +323,8 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
+		      	<label class="labs">UID: </label>
+		        <input type="text" id="UserId" readonly="readonly"> <br>
 		        <label class="labs">Name: </label>
 		        <input type="text" id="FName" readonly="readonly"> <br>
 		        <label class="labs">Organization: </label>
@@ -366,6 +375,7 @@
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
 			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
 			import { getDatabase, ref, set, child, onValue, get, update, push, remove } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+			import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
 
 			const firebaseConfig = {
 			  apiKey: "AIzaSyCfwQ5G2TPE4gZqEHPtvRv1Ew1o3M-ndP4",
@@ -381,20 +391,7 @@
 			const app = initializeApp(firebaseConfig);
 			const analytics = getAnalytics(app);
 			const database = getDatabase(app);
-
-
-			function Select_AllData() {
-				(dbRef, 'Verified Registered User/').once('value', function (snapshot) {
-					snapshot.forEach(function (childSnapshot) {
-						var name = childSnapshot.val().fullName;
-						var org = childSnapshot.val().organization;
-						var contPer = childSnapshot.val().contactPerson;
-						var contNo = childSnapshot.val().contactNo;
-						var loc = childSnapshot.val().location;
-						var email = childSnapshot.val().emailAddress;
-					});
-				});
-			}
+			const auth = getAuth(app);
 
 			var id = 0;
 			var newUserList = [];
@@ -403,7 +400,7 @@
 
 			//-----USER TABLE-----//
 
-			function AddItemToTable(name,org,contNo,contPer,loc,email,status){
+			function AddItemToTable(Uid,name,org,contNo,contPer,loc,email,status){
 				let trow = document.createElement("tr");
 				let td1 = document.createElement('td');
 				let td2 = document.createElement('td');
@@ -413,16 +410,18 @@
 				let td6 = document.createElement('td');
 				let td7 = document.createElement('td');
 				let td8 = document.createElement('td');
+				let td9 = document.createElement('td');
 
-				newUserList.push([name,org,contNo,contPer,loc,email,status]);
+				newUserList.push([Uid,name,org,contNo,contPer,loc,email,status]);
 				td1.innerHTML = ++id;
-				td2.innerHTML = name;
-				td3.innerHTML = org;
-				td4.innerHTML = contNo;
-				td5.innerHTML = contPer;
-				td6.innerHTML = loc;
-				td7.innerHTML = email;
-				td8.innerHTML = status;
+				td2.innerHTML = Uid;
+				td3.innerHTML = name;
+				td4.innerHTML = org;
+				td5.innerHTML = contNo;
+				td6.innerHTML = contPer;
+				td7.innerHTML = loc;
+				td8.innerHTML = email;
+				td9.innerHTML = status;
 
 				trow.appendChild(td1);
 				trow.appendChild(td2);
@@ -432,89 +431,120 @@
 				trow.appendChild(td6);
 				trow.appendChild(td7);
 				trow.appendChild(td8);
+				trow.appendChild(td9);
 
 				var ControlDiv = document.createElement("td");
-				ControlDiv.innerHTML = '<button type="button" class="manage-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="FillModal('+id+')">VIEW</button>'
+				ControlDiv.innerHTML = '<button type="button" class="manage-btn" data-toggle="modal" data-target="#ModalCenter" onclick="FillModal('+id+')">VIEW</button>'
 
 				trow.appendChild(ControlDiv);
 				tbody.appendChild(trow);
 
 			}
 
-			function AddAllITemsToTable(UnverifiedUser) {
+			function AddAllITemsToTable(User) {
 				id=0;
 				tbody.innerHTML="";
-				UnverifiedUser.forEach(element => {
-					AddItemToTable(element.fullName, element.organization, element.contactPerson, element.contactNo, element.location, element.emailAddress, element.status);
+				User.forEach(element => {
+					AddItemToTable(element.uid, element.fullName, element.organization, element.contactPerson, element.contactNo, element.location, element.id, element.status);
 				});
 			}
-
-			/*function GetAllDataOnce() {
-				const dbRef = ref(database);
-
-				get(child(dbRef, 'Unverified Registered User/'))
-				.then((snapshot) => {
-					var unverifiedUsers = [];
-
-					snapshot.forEach(childSnapshot => {
-						unverifiedUsers.push(childSnapshot.val());
-					});
-
-					AddAllITemsToTable(unverifiedUsers);
-				});
-			}*/
 
 			function GetAllDataRealtime() {
 				const dbRef = ref(database, 'Users/');
 
 				onValue(dbRef,(snapshot) => {
-					var unverifiedUsers = [];
+					var Users = [];
 
 					snapshot.forEach(childSnapshot => {
-						unverifiedUsers.push(childSnapshot.val());
+						Users.push(childSnapshot.val());
 					});
 
-					AddAllITemsToTable(unverifiedUsers);
+					AddAllITemsToTable(Users);
 				})
 			}
 
 			window.onload = GetAllDataRealtime;
 
-			var PendModName = document.getElementById('FName');
-			var PendModOrg = document.getElementById('Org');
-			var PendModContPer = document.getElementById('ContPer');
-			var PendModContNo = document.getElementById('ContNum');
-			var PendModLoc = document.getElementById('Loca');
-			var PendModEmail = document.getElementById('EmailAdd');
-			var PendModStatus = document.getElementById('Stat');
-
-			var BtnConfPend = document.getElementById('ConfUseBtn');
-			var BtnDecPend = document.getElementById('DecUseBtn');
+			var ModUid = document.getElementById('UserId');
+			var ModName = document.getElementById('FName');
+			var ModOrg = document.getElementById('Org');
+			var ModContPer = document.getElementById('ContPer');
+			var ModContNo = document.getElementById('ContNum');
+			var ModLoc = document.getElementById('Loca');
+			var ModEmail = document.getElementById('EmailAdd');
+			var ModStatus = document.getElementById('Stat');
 
 			window.FillModal=(index) => {
 				if(index==null){
-					PendModName.value = "";
-					PendModOrg.value = "";
-					PendModContPer.value = "";
-					PendModContNo.value = "";
-					PendModLoc.value = "";
-					PendModEmail.value = "";
-					PendModStatus.value = "";
+					ModUid.value = "";
+					ModName.value = "";
+					ModOrg.value = "";
+					ModContPer.value = "";
+					ModContNo.value = "";
+					ModLoc.value = "";
+					ModEmail.value = "";
+					ModStatus.value = "";
 				}
 				else{
 					--index;
-					PendModName.value = newUserList[index][0];
-					PendModOrg.value = newUserList[index][1];
-					PendModContPer.value = newUserList[index][2];
-					PendModContNo.value = newUserList[index][3];
-					PendModLoc.value = newUserList[index][4];
-					PendModEmail.value = newUserList[index][5];
-					PendModStatus.value = newUserList[index][6];
+					ModUid.value = newUserList[index][0];
+					ModName.value = newUserList[index][1];
+					ModOrg.value = newUserList[index][2];
+					ModContPer.value = newUserList[index][3];
+					ModContNo.value = newUserList[index][4];
+					ModLoc.value = newUserList[index][5];
+					ModEmail.value = newUserList[index][6];
+					ModStatus.value = newUserList[index][7];
 					
 				}
+
+				if(ModStatus.value=="Verified"){
+					confBtn.style.display = 'none';
+					decBtn.style.display = 'none';
+				}
+				else if(ModStatus.value=="Declined"){
+					confBtn.style.display = 'none';
+					decBtn.style.display = 'none';
+				}
+				else{}
 			}
 
 			
+
+			const confBtn = document.getElementById("ConfUseBtn");
+			confBtn.addEventListener('click', (e) => {
+			  update(ref(database, "Users/" + ModUid.value), {
+				 status: "Verified",
+				 
+			  })
+			  .then(()=>{
+			 	 window.alert("User Verified! Please refresh the page.");
+				 $("#ModalCenter").modal('hide');
+			  })
+			  .catch(()=>{
+			 	 window.alert("ERROR!");
+			  })
+
+			})
+
+
+			const decBtn = document.getElementById("DecUseBtn");
+			decBtn.addEventListener('click', (e) => {
+			  update(ref(database, "Users/" + "5aMkNBmKdkXUeIKpFkw92Mt3WXa2"), {
+				 status: "Declined",
+
+			  })
+			  .then(()=>{
+			 	 window.alert("User Declined! Please refresh the page.");
+			 	 ModStatus.value = "Declined";
+				 confBtn.style.display = 'none';
+				 decBtn.style.display = 'none';
+			  })
+			  .catch(()=>{
+			 	 window.alert("ERROR!");
+			  })
+
+			})
 
 			//-----USER TABLE-----//
 
