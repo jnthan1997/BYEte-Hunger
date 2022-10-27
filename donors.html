@@ -143,14 +143,15 @@
 
 			.user-container{
 			    border: 0.5px solid #B1B1B1;
-			    margin: 15px 40px;
+			    margin: 15px 25px;
 			    max-width: 100%;
-			    height: 424px;
+			    height: 450px;
 			    background-color: white;
 			}
+
 			.donors-container{
 			    overflow-x: auto;
-			    max-height: 357px;
+			    max-height: 380px;
 			}
 			.donors_table{
 			    overflow-y: scroll;
@@ -165,8 +166,6 @@
 			    border: 0.5px solid #B1B1B1;
 			    padding: 10px;
 			    font-size: 14px;
-			    /*position: sticky;
-			    top: 0px;*/
 			    background-color: rgb(210, 210, 210);
 
 			}
@@ -179,6 +178,7 @@
 			    padding: 20px;
 			    font-size: 12px;
 			    text-align: center;
+			    
 			}
 			.control-center{
 			    text-align: center;
@@ -211,6 +211,7 @@
 			.labs{
 				display: inline-block;
 				width: 150px;
+				padding-top: 10px;
 			}
 
 			input {
@@ -294,7 +295,7 @@
 					<table class= "donors_table">
 						<thead>
 							<th>NO</th>
-							<th>UID</th>
+							<th>USER ID</th>
 							<th>DONOR NAME</th>
 							<th>ORGANIZATION</th>
 							<th>CONTACT PERSON</th>
@@ -323,7 +324,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		      	<label class="labs">UID: </label>
+		      	<label class="labs">USER ID: </label>
 		        <input type="text" id="UserId" readonly="readonly"> <br>
 		        <label class="labs">Name: </label>
 		        <input type="text" id="FName" readonly="readonly"> <br>
@@ -374,8 +375,7 @@
 		<script type="module">
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
 			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
-			import { getDatabase, ref, set, child, onValue, get, update, push, remove } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
-			import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
+			import { getDatabase, ref, set, child, onValue, get, update, push } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
 
 			const firebaseConfig = {
 			  apiKey: "AIzaSyCfwQ5G2TPE4gZqEHPtvRv1Ew1o3M-ndP4",
@@ -391,7 +391,6 @@
 			const app = initializeApp(firebaseConfig);
 			const analytics = getAnalytics(app);
 			const database = getDatabase(app);
-			const auth = getAuth(app);
 
 			var id = 0;
 			var newUserList = [];
@@ -445,7 +444,7 @@
 				id=0;
 				tbody.innerHTML="";
 				User.forEach(element => {
-					AddItemToTable(element.uid, element.fullName, element.organization, element.contactPerson, element.contactNo, element.location, element.id, element.status);
+					AddItemToTable(element.uid, element.fullName, element.organization, element.contactPerson, element.contactNo, element.location, element.emailAddress, element.status);
 				});
 			}
 
