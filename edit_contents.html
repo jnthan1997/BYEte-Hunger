@@ -20,7 +20,7 @@
 			<div class = "menu-btn">
 				<img class = "menu-logo" src="images/menu.png">
 			</div>
-			<div class = "logout-btn">
+			<div id = "logout" class = "logout-btn">
 				<img class = "logout-logo" src="images/logout.png">
 				<p style="float: right; padding: 5px; font-size: 15px;">Log out</p>
 			</div>
@@ -168,6 +168,7 @@
 			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
 			import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
 			import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-storage.js";
+			import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
 
 			const firebaseConfig = {
 			  apiKey: "AIzaSyCfwQ5G2TPE4gZqEHPtvRv1Ew1o3M-ndP4",
@@ -184,6 +185,7 @@
 			const analytics = getAnalytics(app);
 			const database = getDatabase(app);
 			const storage = getStorage(app);
+			const auth = getAuth(app);
 
 
 			/*-----ANNOUNCEMENT-----*/
@@ -291,6 +293,22 @@
 			});
 
 			/*-----TRIVIA-----*/
+
+
+			/*-----SIGN OUT-----*/
+
+			document.getElementById("logout").addEventListener('click', (e) => {
+
+				signOut(auth).then(() => {
+					console.log("User has logged out!");
+					window.location = 'admin_login.html';
+				}).catch((error) => {
+					console.log("Logout Error!");
+				})
+
+			})
+
+			/*-----SIGN OUT-----*/
 
 	  </script>
 

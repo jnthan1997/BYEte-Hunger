@@ -161,11 +161,12 @@
 			.donors_table {
 			    border-collapse: collapse;
 			}
+
 			.donors_table th {
 				text-align: center;
 			    border: 0.5px solid #B1B1B1;
 			    padding: 10px;
-			    font-size: 14px;
+			    font-size: 12px;
 			    background-color: rgb(210, 210, 210);
 
 			}
@@ -376,6 +377,7 @@
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
 			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
 			import { getDatabase, ref, set, child, onValue, get, update, push } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+			import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
 
 			const firebaseConfig = {
 			  apiKey: "AIzaSyCfwQ5G2TPE4gZqEHPtvRv1Ew1o3M-ndP4",
@@ -391,6 +393,7 @@
 			const app = initializeApp(firebaseConfig);
 			const analytics = getAnalytics(app);
 			const database = getDatabase(app);
+			const auth = getAuth(app);
 
 			var id = 0;
 			var newUserList = [];
@@ -449,7 +452,7 @@
 			}
 
 			function GetAllDataRealtime() {
-				const dbRef = ref(database, 'Users/');
+				const dbRef = ref(database, 'Users');
 
 				onValue(dbRef,(snapshot) => {
 					var Users = [];
@@ -460,6 +463,7 @@
 
 					AddAllITemsToTable(Users);
 				})
+
 			}
 
 			window.onload = GetAllDataRealtime;
@@ -508,8 +512,6 @@
 				else{}
 			}
 
-			
-
 			const confBtn = document.getElementById("ConfUseBtn");
 			confBtn.addEventListener('click', (e) => {
 			  update(ref(database, "Users/" + ModUid.value), {
@@ -529,15 +531,13 @@
 
 			const decBtn = document.getElementById("DecUseBtn");
 			decBtn.addEventListener('click', (e) => {
-			  update(ref(database, "Users/" + "5aMkNBmKdkXUeIKpFkw92Mt3WXa2"), {
+			  update(ref(database, "Users/" + ModUid.value), {
 				 status: "Declined",
 
 			  })
 			  .then(()=>{
 			 	 window.alert("User Declined! Please refresh the page.");
-			 	 ModStatus.value = "Declined";
-				 confBtn.style.display = 'none';
-				 decBtn.style.display = 'none';
+				 $("#ModalCenter").modal('hide');
 			  })
 			  .catch(()=>{
 			 	 window.alert("ERROR!");
@@ -546,6 +546,22 @@
 			})
 
 			//-----USER TABLE-----//
+
+
+			/*-----SIGN OUT-----*/
+
+			document.getElementById("logout").addEventListener('click', (e) => {
+
+				signOut(auth).then(() => {
+					console.log("User has logged out!");
+					window.location = 'admin_login.html';
+				}).catch((error) => {
+					console.log("Logout Error!");
+				})
+
+			})
+
+			/*-----SIGN OUT-----*/
 
 		</script>
 
