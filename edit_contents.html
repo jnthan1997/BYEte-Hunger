@@ -168,7 +168,7 @@
 			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
 			import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
 			import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-storage.js";
-			import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
+			import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
 
 			const firebaseConfig = {
 			  apiKey: "AIzaSyCfwQ5G2TPE4gZqEHPtvRv1Ew1o3M-ndP4",
@@ -299,9 +299,17 @@
 
 			document.getElementById("logout").addEventListener('click', (e) => {
 
+				onAuthStateChanged(auth, (user) => {
+					if (!user) {
+						console.log("User has logged out.");
+						location.replace("admin_login.html")
+					} else {
+						
+					}
+				});
+
 				signOut(auth).then(() => {
-					console.log("User has logged out!");
-					window.location = 'admin_login.html';
+					
 				}).catch((error) => {
 					console.log("Logout Error!");
 				})

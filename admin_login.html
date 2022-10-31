@@ -66,21 +66,21 @@
   				signInWithEmailAndPassword(auth, email, password)
   				.then((userCredential) => {
   					const user = userCredential.user;
-  					window.location = 'dashboard.html';
   				})
   				.catch((error) => {
   					window.alert("Login error! Please input a valid Email or Password!");
   				});
-
-  				onAuthStateChanged(auth, (user) => {
-  					if (user) {
-    					console.log("User has logged in.");
-  					} else {
-   						
-  					}
-				});
   				
   			});
+
+  			onAuthStateChanged(auth, (user) => {
+				if (user) {
+					console.log("User has logged in.");
+					location.replace("dashboard.html")
+				} else {
+					
+				}
+			});
 
 		</script>
 
