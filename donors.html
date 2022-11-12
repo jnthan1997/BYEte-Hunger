@@ -156,12 +156,9 @@
 			.donors_table{
 			    overflow-y: scroll;
 			    width: 100%;
+			    border-collapse: collapse;
 			    
 			}
-			.donors_table {
-			    border-collapse: collapse;
-			}
-
 			.donors_table th {
 				text-align: center;
 			    border: 0.5px solid #B1B1B1;
@@ -176,7 +173,7 @@
 			}
 			.donors_table td {
 			    border: 0.5px solid #B1B1B1;
-			    padding: 20px;
+			    padding: 11px;
 			    font-size: 12px;
 			    text-align: center;
 			    
@@ -274,7 +271,7 @@
 				<div class = "item"><a href="dashboard.html"><img class = "side-logo" src="images/dashboard.png">Dasboard</a></div>
 				<div class = "item"><a href="reports.html"><img class = "side-logo" src="images/reports.png">Reports</a></div>
 				<div class = "item"><a href="chats.html"><img class = "side-logo" src="images/chats.png">Chats</a></div>
-				<div class = "item"><a href="donation_status.html"><img class = "side-logo" src="images/status.png">Donation Status</a></div>
+				<div class = "item"><a href="donations.html"><img class = "side-logo" src="images/status.png">Donation Status</a></div>
 				<div class = "item"><a href="edit_contents.html"><img class = "side-logo" src="images/announcement.png">Edit Contents</a></div>
 				<div class = "item"><a href="donors.html"><img class = "side-logo" src="images/donors.png">Donors</a></div>
 			</div>
@@ -452,21 +449,20 @@
 			}
 
 			function GetAllDataRealtime() {
-				const dbRef = ref(database, 'Users');
+	           const dbRef = ref(database, 'Users');
 
 				onValue(dbRef,(snapshot) => {
-					var Users = [];
+				    var Users = [];
+				    snapshot.forEach(userSnapshot => {
+				        Users.push(userSnapshot.val());
+				    });
 
-					snapshot.forEach(childSnapshot => {
-						Users.push(childSnapshot.val());
-					});
-
-					AddAllITemsToTable(Users);
+				    AddAllITemsToTable(Users);
 				})
 
-			}
+	        }
 
-			window.onload = GetAllDataRealtime;
+	        window.onload = GetAllDataRealtime;
 
 			var ModUid = document.getElementById('UserId');
 			var ModName = document.getElementById('FName');
@@ -577,4 +573,3 @@
 
 	</body>
 </html>
-

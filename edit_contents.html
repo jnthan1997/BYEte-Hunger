@@ -35,7 +35,7 @@
 				<div class = "item"><a href="dashboard.html"><img class = "side-logo" src="images/dashboard.png">Dasboard</a></div>
 				<div class = "item"><a href="reports.html"><img class = "side-logo" src="images/reports.png">Reports</a></div>
 				<div class = "item"><a href="chats.html"><img class = "side-logo" src="images/chats.png">Chats</a></div>
-				<div class = "item"><a href="donation_status.html"><img class = "side-logo" src="images/status.png">Donation Status</a></div>
+				<div class = "item"><a href="donations.html"><img class = "side-logo" src="images/status.png">Donation Status</a></div>
 				<div class = "item"><a href="edit_contents.html"><img class = "side-logo" src="images/announcement.png">Edit Contents</a></div>
 				<div class = "item"><a href="donors.html"><img class = "side-logo" src="images/donors.png">Donors</a></div>
 			</div>
@@ -205,17 +205,19 @@
 
 					const uploadAnnouncement = uploadBytesResumable(storageRef, file_ann, metadata_ann);
 
-					getDownloadURL(uploadAnnouncement.snapshot.ref).then((downloadURL) => {
-						console.log('File available at', downloadURL);
+					getDownloadURL(uploadAnnouncement.snapshot.ref).then((announcementURL) => {
+					    console.log('File available at', announcementURL);
+					    
+					    set(ref(database, 'page-content/' + 'announcement/'), {
+					        announcementImg: announcementURL,
+					    })
+					    .then(() => {
+					     window.alert("Announcement Updated!");
+					    })
+					    .catch((error) => {
+					     window.alert("Error!");
+					    });
 					})
-
-					.then(() => {
-					 window.alert("Announcement Updated!");
-					})
-				    .catch((error) => {
-					 window.alert("Error!");
-			        });
-
 			});
 
 			document.getElementById("announcement-delete").addEventListener('click', (e) => {
@@ -230,12 +232,7 @@
 
 			document.getElementById("newsfeed-post").addEventListener('click', (e) => {
 
-				const newsfeedText = document.getElementById("newsfeed-content").value;
 				
-				  set(ref(database, 'page-content/' + 'newsfeed/'), {
-					  newsfeedText: newsfeedText,
-		
-				  })
 			  
 			  e.preventDefault();
 
@@ -248,18 +245,24 @@
 						contentType: file.type
 					}
 
-					const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+					const uploadNews = uploadBytesResumable(storageRef, file, metadata);
 
-					getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-						console.log('File available at', downloadURL);
-					})
+					getDownloadURL(uploadNews.snapshot.ref).then((newsfeedURL) => {
+					    console.log('File available at', newsfeedURL);
 
-					.then(() => {
-					 window.alert("News Feed Updated!");
+					    const newsfeedText = document.getElementById("newsfeed-content").value;
+					    
+					    set(ref(database, 'page-content/' + 'newsfeed/'), {
+					        newsfeedImg: newsfeedURL,
+					        newsfeedText: newsfeedText,
+					    })
+					    .then(() => {
+					     window.alert("News Feed Updated!");
+					    })
+					    .catch((error) => {
+					     window.alert("Error!");
+					    });
 					})
-				    .catch((error) => {
-					 window.alert("Error!");
-			        });
 
 			});
 
