@@ -47,29 +47,31 @@
 		<div class= "db-container">
 			<div class="table-container-1">
 				<div class="row-1">
-					<div class="label"><b>Total Donations Received Monthly </b></div>
+					<div class="label"><b>Total No. Verified Donors</b></div>
 					<div class="line"></div>
-					<div class="total">0000</div>
+					<input type="text" id="output1" class="total">
 				</div>
+
+					<button type="button" id="submit" class="btn">Get</button>
 
 				<div class="row-2">
-					<div class="label"><b>Lorem Ipsum</b></div>
+					<div class="label"><b>Total No. of Confirmed Donations</b></div>
 					<div class="line"></div>
-					<div class="total">0000</div>
-				</div>
-
-				<div class="row-3">
-					<div class="label"><b>Total No. of Donors</b></div>
-					<div class="line"></div>
-					<div class="total">0000</div>
+					<div id="output2" class="total"></div>
 				</div>
 			</div>
 
 			<div class="table-container-2">
-				<div class="cell-1">
-					<div class="label"><b>Lorem Ipsum</b></div>
-					<div class="line1"></div>
-					<div class="total">0000</div>
+				<div class="row-1">
+					<div class="label"><b>Total No. of Pending Donors</b></div>
+					<div class="line"></div>
+					<div id="output3" class="total"></div>
+				</div>
+
+				<div class="row-2">
+					<div class="label"><b>Total No. of Pending Donations</b></div>
+					<div class="line"></div>
+					<div id="output4" class="total"></div>
 				</div>
 			</div>
 		</div>
@@ -93,6 +95,62 @@
 		</script>
 
 		<!-----Expand/Collapse Sidebar----->
+		
+		<!-----FIREBASE----->
 
+		<script type="module">
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+			import { getDatabase, ref, get, query, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+			// TODO: Add SDKs for Firebase products that you want to use
+			// https://firebase.google.com/docs/web/setup#available-libraries
+		  
+			// Your web app's Firebase configuration
+			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			const firebaseConfig = {
+			  apiKey: "AIzaSyCfwQ5G2TPE4gZqEHPtvRv1Ew1o3M-ndP4",
+			  authDomain: "byete-hunger-application.firebaseapp.com",
+			  databaseURL: "https://byete-hunger-application-default-rtdb.firebaseio.com",
+			  projectId: "byete-hunger-application",
+			  storageBucket: "byete-hunger-application.appspot.com",
+			  messagingSenderId: "791717154010",
+			  appId: "1:791717154010:web:d49d5dc2cb908a7ae5e9e3",
+			  measurementId: "G-KE1ZL9NVFG"
+			};
+		  
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+			const analytics = getAnalytics(app);
+			const database = getDatabase(app);
+
+			document.getElementById('submit').onclick = function(){
+				
+				const dbRef = ref(database, 'Users');
+
+				/*--onValue(dbRef,(snapshot) => {
+
+					var output1 = snapshot.numChildren();
+					document.getElementById('output1').value = output1;
+				}); --*/
+
+				/*--onValue(dbRef, (snapshot) => {
+					const data = snapshot.val()
+					const lenML = data.length - 1
+					console.log(lenML)
+				}) --*/
+
+				const query = query(ref, orderByChild('status'), equalTo('Pending'));
+				get(query).then((results) => {
+				console.log(Object.keys(results.val()).length);
+				results.forEach((snapshot) => {
+					console.log(snapshot.key, snapshot.val());
+				});
+			});
+			}
+
+		</script>
+	
+		<!-----FIREBASE----->
 	</body>
 </html>
