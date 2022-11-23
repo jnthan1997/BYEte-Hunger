@@ -130,7 +130,7 @@
 
 				onValue(dbRef,(snapshot) => {
 
-					var output1 = snapshot.numChildren();
+					var output1 = snapshot.size;
 					document.getElementById('output1').value = output1;
 				});
 			}
