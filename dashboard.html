@@ -49,15 +49,13 @@
 				<div class="row-1">
 					<div class="label"><b>Total No. Verified Donors</b></div>
 					<div class="line"></div>
-					<input type="text" id="output1" class="total">
+					<input type="text" id="output1" readonly="readonly" class="total">
 				</div>
-
-					<button type="button" id="submit" class="btn">Get</button>
 
 				<div class="row-2">
 					<div class="label"><b>Total No. of Confirmed Donations</b></div>
 					<div class="line"></div>
-					<div id="output2" class="total"></div>
+					<div id="output4" class="total"></div>
 				</div>
 			</div>
 
@@ -65,7 +63,7 @@
 				<div class="row-1">
 					<div class="label"><b>Total No. of Pending Donors</b></div>
 					<div class="line"></div>
-					<div id="output3" class="total"></div>
+					<input type="text" id="output2" readonly="readonly" class="total">
 				</div>
 
 				<div class="row-2">
@@ -102,7 +100,7 @@
 			// Import the functions you need from the SDKs you need
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
 			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
-			import { getDatabase, ref, get, query, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+			import { getDatabase, ref, get, query, onValue, orderByChild, equalTo } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
 			// TODO: Add SDKs for Firebase products that you want to use
 			// https://firebase.google.com/docs/web/setup#available-libraries
 		  
@@ -124,30 +122,31 @@
 			const analytics = getAnalytics(app);
 			const database = getDatabase(app);
 
-			document.getElementById('submit').onclick = function(){
+			var output1 = document.getElementById('output1');
 				
-				const dbRef = ref(database, 'Users');
-
-				/*--onValue(dbRef,(snapshot) => {
-
-					var output1 = snapshot.numChildren();
-					document.getElementById('output1').value = output1;
-				}); --*/
-
-				/*--onValue(dbRef, (snapshot) => {
-					const data = snapshot.val()
-					const lenML = data.length - 1
-					console.log(lenML)
-				}) --*/
-
-				const query = query(ref, orderByChild('status'), equalTo('Pending'));
-				get(query).then((results) => {
-				console.log(Object.keys(results.val()).length);
-				results.forEach((snapshot) => {
-					console.log(snapshot.key, snapshot.val());
+				const dbRef = ref(getDatabase(), 'Users');
+				const dbQuery = query(dbRef, orderByChild('status'), equalTo('Verified'));
+				
+				get(dbQuery).then((output1) => {
+					const Num = (Object.keys(output1.val()).length);
+					document.getElementById('output1').value = Num;
+					// output1.forEach((snapshot) => {
+					// 	console.log(snapshot.key, snapshot.val());
+					// });
 				});
-			});
-			}
+			
+				var output2 = document.getElementById('output2');
+				
+				const dbRef2 = ref(getDatabase(), 'Users');
+				const dbQuery2 = query(dbRef2, orderByChild('status'), equalTo('Pending'));
+				
+				get(dbQuery2).then((output2) => {
+					const Num = (Object.keys(output2.val()).length);
+					document.getElementById('output2').value = Num;
+					// output1.forEach((snapshot) => {
+					// 	console.log(snapshot.key, snapshot.val());
+					// });
+				});
 
 		</script>
 	
