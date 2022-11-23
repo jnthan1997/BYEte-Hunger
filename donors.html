@@ -497,7 +497,11 @@
 					
 				}
 
-				if(ModStatus.value=="Verified"){
+				if(ModStatus.value=="Pending"){
+					confBtn.style.display = 'block';
+					decBtn.style.display = 'block';
+				}
+				else if(ModStatus.value=="Verified"){
 					confBtn.style.display = 'none';
 					decBtn.style.display = 'none';
 				}
