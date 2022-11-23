@@ -52,7 +52,7 @@
 					<input type="text" id="output1" class="total">
 				</div>
 
-					<button type="button" id="submit" class="btn">Get</button>
+				<button type="button" id="submit" class="btn">Get</button>
 
 				<div class="row-2">
 					<div class="label"><b>Total No. of Confirmed Donations</b></div>
@@ -128,25 +128,11 @@
 				
 				const dbRef = ref(database, 'Users');
 
-				/*--onValue(dbRef,(snapshot) => {
+				onValue(dbRef,(snapshot) => {
 
 					var output1 = snapshot.numChildren();
 					document.getElementById('output1').value = output1;
-				}); --*/
-
-				/*--onValue(dbRef, (snapshot) => {
-					const data = snapshot.val()
-					const lenML = data.length - 1
-					console.log(lenML)
-				}) --*/
-
-				const query = query(ref, orderByChild('status'), equalTo('Pending'));
-				get(query).then((results) => {
-				console.log(Object.keys(results.val()).length);
-				results.forEach((snapshot) => {
-					console.log(snapshot.key, snapshot.val());
 				});
-			});
 			}
 
 		</script>

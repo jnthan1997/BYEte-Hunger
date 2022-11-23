@@ -152,7 +152,7 @@
 
 			.donations-container{
 			    overflow-x: auto;
-			    max-height: 400px;
+			    max-height: 348px;
 			}
 			.donations_table{
 			    overflow-y: scroll;
@@ -178,7 +178,7 @@
 			    padding: 7px;
 			    font-size: 12px;
 			    text-align: center;
-			    max-width: 100px;
+			    max-width: 80px;
 		        overflow: hidden;
 		        text-overflow: ellipsis;
 		        white-space: nowrap;
@@ -213,29 +213,34 @@
 
 			.modal-body {
 				max-height: 530px;
+				max-width: 500px;
 				margin: auto;
 				overflow-y: auto;
 			}
 
 			.labs{
-				display: inline-block;
+				display: block;
 				width: 150px;
-				padding-top: 10px;
+				padding-top: 15px;
 			}
 
 			input {
 				width: 300px;
-				outline: none;
 				padding: 0px 3px;
 			}
 
 			input:focus {
 				outline: none;
+			}
 
+			#Img {
+				width: 20vw;
+			    max-width: 100%;
+			    max-height: 100%;
 			}
 
 			#Note {
-				margin-top: 5px;
+				resize: none;
 				width: 300px;
 				height: 100px;
 				padding: 0px 3px;
@@ -320,7 +325,7 @@
 				    <option value="2">By Organization</option>
 				    <option value="3">By Type</option>
 				  </select>
-			    <button id="SearchBtn" class="btn btn-outline-success ml-1" type="button">SEARCH</button>
+			    <button id="SearchBtn" class="btn btn-outline-success" type="button">SEARCH</button>
 			  </div>
 			</div>
 			
@@ -342,6 +347,7 @@
 							<th>EXPIRATION DATE</th>
 							<th>WEIGHT</th>
 							<th>NOTE</th>
+							<th>ATTACHED IMAGE</th>
 							<th>STATUS</th>
 							<th>CONTROL CENTER</th>
 						</thead>
@@ -392,7 +398,7 @@
 		        <label class="labs">Time: </label>
 		        <input type="text" id="Time" readonly="readonly"> <br>
 
-		         <label class="labs">Purchase Date: </label>
+		        <label class="labs">Purchase Date: </label>
 		        <input type="text" id="PDate" readonly="readonly"> <br>
 
 		        <label class="labs">Expiration Date: </label>
@@ -402,16 +408,15 @@
 		        <input type="text" id="Weight" readonly="readonly"> <br>
 
 		        <label class="labs">Note: </label>
-		        <!--<input type="text" id="Note"> <br>-->
 		        <textarea id="Note" readonly="readonly"></textarea> <br>
 
-		        <!--<label class="labs">Attached Image: </label>
-		        <input type="text" id="Img" readonly="readonly"> <br>-->
+		        <label class="labs">Attached Image: </label>
+		        <img id="Img"> <br>
+		        <!--<input type="text" id="Img" readonly="readonly"> <br>-->
 
 		        <label class="labs">Status: </label>
 		        <input type="text" id="Stat" readonly="readonly">
 
-				
 		      </div>
 		      <div class="modal-footer">
 		        <button id="PickBtn" type="button" class="btn btn-primary">PICKED-UP</button>
@@ -476,7 +481,7 @@
 
 			//-----DONATIONS TABLE-----//
 
-			function AddItemToTable(id,uid,name,org,contPer,contNo,type,date,time,pdate,edate,weight,note,status){
+			function AddItemToTable(id,uid,name,org,contPer,contNo,type,date,time,pdate,edate,weight,note,image,status){
 				let trow = document.createElement("tr");
 				let td1 = document.createElement('td');
 				let td2 = document.createElement('td');
@@ -493,8 +498,9 @@
 				let td13 = document.createElement('td');
 				let td14 = document.createElement('td');
 				let td15 = document.createElement('td');
+				let td16 = document.createElement('td');
 
-				newDonationList.push([id,uid,name,org,contPer,contNo,type,date,time,pdate,edate,weight,note,status]);
+				newDonationList.push([id,uid,name,org,contPer,contNo,type,date,time,pdate,edate,weight,note,image,status]);
 				td1.innerHTML = ++num;
 				td2.innerHTML = id;
 				td3.innerHTML = uid;
@@ -509,7 +515,8 @@
 				td12.innerHTML = edate;
 				td13.innerHTML = weight;
 				td14.innerHTML = note;
-				td15.innerHTML = status;
+				td15.innerHTML = image;
+				td16.innerHTML = status;
 
 				td15.classList += "statusField";
 				td4.classList += "nameField";
@@ -531,6 +538,7 @@
 				trow.appendChild(td13);
 				trow.appendChild(td14);
 				trow.appendChild(td15);
+				trow.appendChild(td16);
 
 				var ControlDiv = document.createElement("td");
 				ControlDiv.innerHTML = '<button type="button" class="manage-btn" data-toggle="modal" data-target="#ModalCenter" onclick="FillModal('+num+')">VIEW</button>'
@@ -544,7 +552,7 @@
 				num=0;
 				tbody.innerHTML="";
 				Donation.forEach(element => {
-					AddItemToTable(element.id, element.uid, element.fullName, element.organization, element.contactPerson, element.contactNo, element.type, element.dateAdded, element.dateAddedTime, element.datePurchased, element.dateExpired, element.weight, element.notes, element.donationStatus);
+					AddItemToTable(element.id, element.uid, element.fullName, element.organization, element.contactPerson, element.contactNo, element.type, element.dateAdded, element.dateAddedTime, element.datePurchased, element.dateExpired, element.weight, element.notes, element.imageUrl, element.donationStatus);
 				});
 			}
 
@@ -580,6 +588,7 @@
 			var ModEDate = document.getElementById('EDate');
 			var ModWeight = document.getElementById('Weight');
 			var ModNote = document.getElementById('Note');
+			var ModImage = document.getElementById('Img');
 			var ModStatus = document.getElementById('Stat');
 
 			window.FillModal=(index) => {
@@ -597,6 +606,7 @@
 					ModEDate.value = "";
 					ModWeight.value = "";
 					ModNote.value = "";
+					ModImage.src = "";
 					ModStatus.value = "";
 				}
 				else{
@@ -614,11 +624,14 @@
 					ModEDate.value = newDonationList[index][10];
 					ModWeight.value = newDonationList[index][11];
 					ModNote.value = newDonationList[index][12];
-					ModStatus.value = newDonationList[index][13];
+					ModImage.src = newDonationList[index][13];
+					ModStatus.value = newDonationList[index][14];
 					
 				}
 
 				if(ModStatus.value=="Pending"){
+					accBtn.style.display = 'block';
+					decBtn.style.display = 'block';
 					pickBtn.style.display = 'none';
 					dropBtn.style.display = 'none';
 					donBtn.style.display = 'none';
@@ -627,12 +640,17 @@
 				else if(ModStatus.value=="Accepted"){
 					accBtn.style.display = 'none';
 					decBtn.style.display = 'none';
+					pickBtn.style.display = 'block';
+					dropBtn.style.display = 'none';
+					donBtn.style.display = 'none';
 				}
 
 				else if(ModStatus.value=="Picked-Up"){
 					accBtn.style.display = 'none';
 					decBtn.style.display = 'none';
 					pickBtn.style.display = 'none';
+					dropBtn.style.display = 'block';
+					donBtn.style.display = 'none';
 				}
 
 				else if(ModStatus.value=="Dropped-Off"){
@@ -640,6 +658,7 @@
 					decBtn.style.display = 'none';
 					pickBtn.style.display = 'none';
 					dropBtn.style.display = 'none';
+					donBtn.style.display = 'block';
 				}
 
 				else if (ModStatus.value=="Donated"){
@@ -665,8 +684,7 @@
 			const accBtn = document.getElementById("AccBtn");
 			accBtn.addEventListener('click', (e) => {
 			  update(ref(database, "Users/" + ModUid.value + "/donation/" + ModDid.value), {
-				 donationStatus: "Accepted",
-				 
+				 donationStatus: "Accepted", 
 			  })
 			  .then(()=>{
 			 	 window.alert("Donation Accepted! Please refresh the page.");
@@ -683,7 +701,6 @@
 			decBtn.addEventListener('click', (e) => {
 			  update(ref(database, "Users/" + ModUid.value + "/donation/" + ModDid.value), {
 				 donationStatus: "Declined",
-
 			  })
 			  .then(()=>{
 			 	 window.alert("Donation Declined! Please refresh the page.");
@@ -700,7 +717,6 @@
 			pickBtn.addEventListener('click', (e) => {
 			  update(ref(database, "Users/" + ModUid.value + "/donation/" + ModDid.value), {
 				 donationStatus: "Picked-Up",
-				 
 			  })
 			  .then(()=>{
 			 	 window.alert("Donation Status Updated! Please refresh the page.");
@@ -717,7 +733,6 @@
 			dropBtn.addEventListener('click', (e) => {
 			  update(ref(database, "Users/" + ModUid.value + "/donation/" + ModDid.value), {
 				 donationStatus: "Dropped-Off",
-				 
 			  })
 			  .then(()=>{
 			 	 window.alert("Donation Status Updated! Please refresh the page.");
@@ -763,15 +778,15 @@
 
 					var td = tr[i].getElementsByClassName(Category);
 
-					for (let j = 0; j < tr.length; j++) {
+					for (let j = 0; j < td.length; j++) {
 						if(td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-							found = true;
+							found=true;
 						}
 					}
 
 					if(found){
 						tr[i].style.display="";
-						found = false;
+						found=false;
 					}
 
 					else{
@@ -791,15 +806,15 @@
 
 					var td = tr[i].getElementsByClassName(Category);
 
-					for (let j = 0; j < tr.length; j++) {
+					for (let j = 0; j < td.length; j++) {
 						if(td[j].innerHTML.toUpperCase() == filter) {
-							found = true;
+							found=true;
 						}
 					}
 
 					if(found){
 						tr[i].style.display="";
-						found = false;
+						found=false;
 					}
 
 					else{
@@ -814,21 +829,21 @@
 					SearchTable("statusField");
 				}
 
-				else if(category.value==1){
+				else if(category.value==1)
 					SearchTable("statusField");
-				}
+				
 
-				else if(category.value==2){
+				else if(category.value==2)
 					SearchTable("nameField");
-				}
+				
 
-				else if(category.value==3){
+				else if(category.value==3)
 					SearchTable("organizationField");
-				}
+				
 
-				else if(category.value==4){
+				else if(category.value==4)
 					SearchTable("typeField");
-				}
+				
 			}
 
 			//-----SEARCH BAR-----//
