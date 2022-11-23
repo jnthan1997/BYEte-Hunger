@@ -109,22 +109,24 @@ h1 {
 /*-----Dashboard-----*/
 
 .db-container {
-    margin-top: 20px;
+    margin: 40px auto;
     max-width: 100%;
   }
   
   .table-container-1 {
     max-width: 100%;
+    margin: 35px;
     display: flex;
     justify-content: center;
   }
-
+  
   .row-1, .row-2{
     background-color: white;
     border: 1px solid #B1B1B1;
     display: inline-table;
-    margin: 40px ;
-    width: 550px;
+    margin: 10px auto;
+    height: 170px;
+    width: 650px;
   }
 
   .btn{
@@ -139,7 +141,7 @@ h1 {
 
   .line{
     width: 0px auto;
-    border: 0.5px solid #B1B1B1;
+    border: 0.2px solid #B1B1B1;
     }
 
 
@@ -147,21 +149,6 @@ h1 {
     color: #515151;
     padding: 20px;
     font-size: 40px;
-    width: 550px;
-    border-color: white;
-    border: 0.1px;
-    text-align: center;
-  }
-
-  
-  .total1{
-    color: #515151;
-    padding: 20px;
-    font-size: 40px;
-    width: 550px;
-    border-color: white;
-    border: 0.1px;
-    text-align: center;
   }
 
   .table-container-2{
@@ -175,6 +162,9 @@ h1 {
     background-color: white;
     border: 1px solid #B1B1B1;
     display: inline-table;
+    margin: 10px auto;
+    height: 230px;
+    width: 1443px;
   }
 
   .line1{

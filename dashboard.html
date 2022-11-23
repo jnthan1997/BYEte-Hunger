@@ -45,28 +45,19 @@
 		<h1>DASHBOARD</h1>
 
 		<div class= "db-container">
-            <div class="table-container-1">
-                <div class="row-1">
-                    <div class="label"><b>Total No. of Verified Donors</b></div>
-                    <div class="line"></div>
-                    <input type="text" id="output1" readonly="readonly" class="total">
-                </div>
+			<div class="table-container-1">
+				<div class="row-1">
+					<div class="label"><b>Total No. Verified Donors</b></div>
+					<div class="line"></div>
+					<input type="text" id="output1" readonly="readonly" class="total">
+				</div>
 
-                <div class="row-2">
-                    <div class="label"><b>Total No. of Pending Donors</b></div>
-                    <div class="line"></div>
-                    <input type="text" id="output2" readonly="readonly" class="total">
-                </div>
-            </div>
-
-            <div class="table-container-2">
-                <div class="cell-1">
-                    <div class="label"><b>Total No. of Donations Received</b></div>
-                    <div class="line"></div>
-                    <input type="text" id="output3" readonly="readonly" class="total1">
-                </div>
-            </div>
-        </div>
+				<div class="row-2">
+					<div class="label"><b>Total No. of Pending Donors</b></div>
+					<div class="line"></div>
+					<input type="text" id="output2" readonly="readonly" class="total">
+				</div>
+			</div>
 
 			<div class="table-container-2">
 				<div class="row-1">
@@ -82,6 +73,7 @@
 				</div>
 			</div>
 		</div>
+
 		
 		<!-----Dashboard Content----->
 
@@ -150,21 +142,6 @@
 					document.getElementById('output2').value = num2;
 				});
 				
-
-			var output3 = document.getElementById('output3');
-
-				const dbRef3 = ref(getDatabase(), 'Users');
-				onValue(dbRef3,(snapshot) => {
-					var Donations = [];
-
-					snapshot.forEach(userSnapshot => {
-						userSnapshot.child("donation").forEach((donationSnapshot) => {
-							Donations.push(donationSnapshot.val());
-							const num3 = (Object.keys(donationSnapshot.val()).length);
-							document.getElementById('output3').value = num3;
-						});
-					});
-				})
 
 		</script>
 	
