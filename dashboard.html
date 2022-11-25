@@ -18,7 +18,7 @@
 			<div class = "menu-btn">
 				<img class = "menu-logo" src="images/menu.png">
 			</div>
-			<div class = "logout-btn">
+			<div id = "logout" class = "logout-btn">
 				<img class = "logout-logo" src="images/logout.png">
 				<p style="float: right; padding: 5px; font-size: 15px;">Log out</p>
 			</div>
@@ -94,7 +94,7 @@
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
 			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
 			import { getDatabase, ref, get, query, orderByChild, equalTo, onValue } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
-			import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
+			import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 
 			const firebaseConfig = {
 			  apiKey: "AIzaSyCfwQ5G2TPE4gZqEHPtvRv1Ew1o3M-ndP4",
