@@ -143,7 +143,7 @@
 					snapshot.forEach(userSnapshot => {
 						userSnapshot.child("donation").forEach((donationSnapshot) => {
 							Donations.push(donationSnapshot.val());
-							const num3 = (Object.keys(donationSnapshot.val()).length);
+							const num3 = (Object.keys(Donations).length);
 							document.getElementById('output3').value = num3;
 						});
 					});
