@@ -213,6 +213,7 @@
 					    })
 					    .then(() => {
 					     window.alert("Announcement Updated!");
+					     location.reload();
 					    })
 					    .catch((error) => {
 					     window.alert("Error!");
@@ -258,6 +259,7 @@
 					    })
 					    .then(() => {
 					     window.alert("News Feed Updated!");
+					     location.reload();
 					    })
 					    .catch((error) => {
 					     window.alert("Error!");
@@ -285,10 +287,11 @@
 				  })
 				  .then(() => {
 					window.alert("Trivia Updated!");
-			  })
-				.catch((error) => {
-					window.alert("Error!");
-			  }); 
+					location.reload();
+				  })
+				  .catch((error) => {
+						window.alert("Error!");
+				  }); 
 			});
 			
 			document.getElementById("trivia-delete").addEventListener('click', (e) => {

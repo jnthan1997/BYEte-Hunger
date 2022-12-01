@@ -521,6 +521,7 @@
 			  .then(()=>{
 			 	 window.alert("User Verified! Please refresh the page.");
 				 $("#ModalCenter").modal('hide');
+				 location.reload();
 			  })
 			  .catch(()=>{
 			 	 window.alert("ERROR!");
@@ -538,6 +539,7 @@
 			  .then(()=>{
 			 	 window.alert("User Declined! Please refresh the page.");
 				 $("#ModalCenter").modal('hide');
+				 location.reload();
 			  })
 			  .catch(()=>{
 			 	 window.alert("ERROR!");
