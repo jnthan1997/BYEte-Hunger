@@ -82,7 +82,7 @@ pipeline{ //All pipeline scripts start here
         }
         stage("Docker Build & Push"){
             steps{ // Building and pushing docker images to docker hub credentials are made to secret
-                withDockerRegistry(credentialsId: 'docker', url: 'https://hub.docker.com/repository/docker/devopsnthn/byete-hunger/'){
+                withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v1/'){
                        sh "docker build -t byete-hunger ."
                        sh "docker tag byete-hunger devopsnthn/byete-hunger:latest "
                        sh "docker push devopsnthn/byete-hunger:latest "
