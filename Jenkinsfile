@@ -33,7 +33,7 @@ pipeline{ //All pipeline scripts start here
         }
         stage("Sonarqube Analysis "){ 
             steps{
-                withSonarQubeEnv('sonar-server') { // project name and project are the same depend on what projectname you have created in SonarQube
+                withSonarQubeEnv('sonar-server2') { // project name and project are the same depend on what projectname you have created in SonarQube
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Byete-hunger \
                     -Dsonar.projectKey=Byete-hunger '''
                 }
