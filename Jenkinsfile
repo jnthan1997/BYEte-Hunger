@@ -88,9 +88,7 @@ pipeline{ //All pipeline scripts start here
                        sh "docker push devopsnthn/byete-hunger:latest "
                 }
                 }
-            }
-        }
-        }
+            }        
         stage("TRIVY"){
             steps{ //scanning image
                 sh "trivy image devopsnthn/byete-hunger:latest > trivyimage.txt" 
