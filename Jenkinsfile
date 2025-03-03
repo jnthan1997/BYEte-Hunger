@@ -93,7 +93,7 @@ pipeline{ //All pipeline scripts start here
         }
         stage("TRIVY"){
             steps{ //scanning image
-                sh "trivy image devopsnthn/netflix:latest > trivyimage.txt" 
+                sh "trivy image devopsnthn/byete-hunger:latest > trivyimage.txt" 
             }
         }
         stage('Deploy to container'){
