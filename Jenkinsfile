@@ -42,7 +42,7 @@ pipeline{ //All pipeline scripts start here
         stage("quality gate"){
            steps { //This Stage will pull the Quality gate result on SonarQube
                 script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
+                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token2' 
                 }
             }
             post{
