@@ -81,11 +81,12 @@ pipeline{ //All pipeline scripts start here
             }
         }
         stage("Docker Build & Push"){
-            steps{ // Building and pushing docker images to docker hub credentials are made to secret         
+            steps{ // Building and pushing docker images to docker hub credentials are made to secret
+                withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
                        sh "docker build -t byete-hunger ."
                        sh "docker tag byete-hunger devopsnthn/byete-hunger:latest "
                        sh "docker push devopsnthn/byete-hunger:latest "
-                    
+                }
                 }
             }
         }
